@@ -1,0 +1,56 @@
+<header class="header header-admin-user">
+  <div class="panel-hamburger" style="float: left;">
+    <a id="hamburger" class="toggle-dashboard-nav hamburger-icon-container" (click)="togglehamburger()">
+      <span class="hamburger-icon"></span>
+    </a>
+  </div>
+
+  <a routerLink="/" class="logo">
+    AFHUnt
+  </a>
+
+  <div class="content-menu-right">
+    <div class="descript-content">
+      <div class="title-page-dash">
+        Mes promotions
+      </div>
+      <div class="libelle-page">
+        2 Promos
+      </div>
+    </div>
+
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li>
+        <a href="#work">
+          <img src="assets/images/help-questionmark_430101.png" alt=""  style="height: 37px;"/>
+        </a>
+      </li>
+      <li>
+        <a href="#about">
+          <span class="item-link-applis">
+            Mes Applis
+          </span>
+        </a>
+      </li>
+      <li>
+          <a  class="open-profils-user" (click)="opendropDown()">
+            <img src="assets/images/utilisateur-100.png" alt=".."/>
+            <span class="pseudo-user">
+              Noel Kenfack
+            </span>
+            <span class="fa fa-chevron-down"></span>
+          </a>
+          <div class="profil-dropdown">
+            <a href="/dashboard/" style="line-height: 15px;">
+              <h5>Noel Kenack</h5>
+              <div class="">
+                noel.kenfack@yahoo.fr
+              </div>
+            </a>
+          </div>
+      </li>
+    </ul>
+  </div>
+</header>

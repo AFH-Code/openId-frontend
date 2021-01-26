@@ -1,0 +1,44 @@
+<header class="header">
+  <a routerLink="/" class="logo">
+		<img src="assets/images/home-96.png" alt="Home Icon CSU"/> Acceuil
+	</a>
+
+  <a routerLink="/" class="login-logo-fixed">
+		<img src="assets/images/logo-lg-afh.png" alt="Logo CSU"/>
+	</a>
+
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li>
+      <a href="#work">
+        <img src="assets/images/help-questionmark_430101.png" alt=""  style="height: 37px;"/>
+      </a>
+    </li>
+    <li>
+      <a href="#about">
+        <span class="item-link-applis">
+          Mes Applis
+        </span>
+      </a>
+    </li>
+    <li>
+        <a class="open-profils-user" (click)="opendropDown()">
+          <img src="assets/images/utilisateur-100.png" alt=".."/>
+          <span class="pseudo-user">
+            Noel Kenfack
+          </span>
+          <span class="fa fa-chevron-down"></span>
+        </a>
+        
+        <div class="profil-dropdown">
+          <a routerLink="/dashboard/" style="line-height: 15px;">
+            <h5>Noel Kenack</h5>
+            <div class="">
+              noel.kenfack@yahoo.fr
+            </div>
+          </a>
+        </div>
+    </li>
+  </ul>
+</header>

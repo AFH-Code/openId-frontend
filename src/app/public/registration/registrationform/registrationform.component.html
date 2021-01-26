@@ -1,0 +1,143 @@
+
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+  <div class="container">
+    <div class="card login-card">
+      <div class="row no-gutters">
+        <div class="col-md-5">
+          <img src="../assets/images/login.jpg" alt="login" class="login-card-img">
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <p class="login-card-description" style="font-family: Philosopher-Bold;">
+              Connectez vous à plus de 06 Applications avec  <strong style="color: #325ea9;">un seul compte AFHunt</strong>
+            </p>
+
+
+              <div class="" style="background: #90acd1; padding: 15px 30px; border: 1px solid #ddd; border-radius: 15px; margin-top: 15px;">
+
+                <div class="text-center" style="margin-bottom: 20px;">
+                  <img src="assets/images/utilisateur-100.png" alt=".." style="height: 50px;"/>
+                </div>
+                
+                <form style="max-width: 100%; display: block;"
+
+                name="form"
+                (ngSubmit)="onSubmit(f)"
+                #f="ngForm"
+                novalidate
+                >
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="alert-danger" *ngIf="f.submitted && firstName.invalid">
+                        <div *ngIf="firstName.errors.required">Username is required</div>
+                        <div *ngIf="firstName.errors.minlength">
+                          Username must be at least 3 characters
+                        </div>
+                        <div *ngIf="firstName.errors.maxlength">
+                          Username must be at most 50 characters
+                        </div>
+                      </div>
+
+                      <div class="form-group mb-4">
+                        <label for="firstName" class="sr-only">Nom de famille</label>
+                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Nom de famille"
+                        [(ngModel)]="form.firstName"
+                        required
+                        minlength="3"
+                        maxlength="50"
+                        #firstName="ngModel"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+                      <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
+                        <div *ngIf="lastName.errors.required">Username is required</div>
+                        <div *ngIf="lastName.errors.minlength">
+                          Username must be at least 3 characters
+                        </div>
+                        <div *ngIf="lastnName.errors.maxlength">
+                          Username must be at most 50 characters
+                        </div>
+                      </div>
+                      <div class="form-group mb-4">
+                        <label for="lastName" class="sr-only">Prenom</label>
+                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Prénom de famille"
+                        [(ngModel)]="form.lastName"
+                        required
+                        minlength="3"
+                        maxlength="50"
+                        #lastName="ngModel"
+                        />
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                    <div *ngIf="username.errors.required">Username is required</div>
+                    <div *ngIf="username.errors.minlength">
+                      Username must be at least 3 characters
+                    </div>
+                    <div *ngIf="username.errors.maxlength">
+                      Username must be at most 50 characters
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="username" class="sr-only">Email Ou Téléphone</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Email ou Téléphone"
+                    [(ngModel)]="form.username"
+                    required
+                    minlength="3"
+                    maxlength="50"
+                    #username="ngModel"
+                    />
+                  </div>
+
+                  <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">
+                      Password must be at least 5 characters
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe"
+                    [(ngModel)]="form.password"
+                    required
+                    minlength="5"
+                    #password="ngModel"
+                    />
+                  </div>
+
+                  <div class="" style="margin-top: 15px;">
+                    <button href="#" class="flat-butt flat-grad-butt" [disabled]="f.invalid">Se connecter</button>
+                    <a href="#" style="float: right;  margin-top: 20px;">Mot de passe oublié ?</a>
+                  </div>
+
+                  <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                    Signup failed!<br />{{ errorMessage }}
+                  </div>
+                </form>
+
+
+              </div>
+              <a href="#!" class="forgot-password-link">Forgot password?</a>
+              <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
+
+              <div class="alert alert-success" *ngIf="isSuccessful">
+                Logged in as {{ roles }}. {{ token }}
+              </div>
+
+              <nav class="login-card-footer-nav">
+                <a href="#!">Terms of use.</a>
+                <a href="#!">Privacy policy</a>
+              </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
