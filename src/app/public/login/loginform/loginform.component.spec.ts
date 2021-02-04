@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LoginformComponent } from './loginform.component';
 
@@ -6,7 +6,7 @@ describe('LoginformComponent', () => {
   let component: LoginformComponent;
   let fixture: ComponentFixture<LoginformComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginformComponent ]
     })
