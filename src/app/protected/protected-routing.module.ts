@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { StatistiqueComponent } from './dashboard/statistique/statistique.component';
+import { ApplicationsComponent } from './developper/applications/applications.component';
+import { HistoriqueconnexionComponent } from './dashboard/historiqueconnexion/historiqueconnexion.component';
+import { ListecompteComponent } from './dashboard/listecompte/listecompte.component';
+import { AppsautoriseComponent } from './dashboard/appsautorise/appsautorise.component';
 
 const routes: Routes = [
   {
@@ -17,6 +21,26 @@ const routes: Routes = [
         path: 'accueil', // child route path
         component: StatistiqueComponent, // child route component that the router renders
         data: { title: 'Opérations sur le compte' }
+      },
+      {
+        path: 'historique/connexions', // child route path
+        component: HistoriqueconnexionComponent, // child route component that the router renders
+        data: { title: 'Liste des tentatives de connexions' }
+      },
+      {
+        path: 'liste/compte', // child route path
+        component: ListecompteComponent, // child route component that the router renders
+        data: { title: 'Liste des comptes utilisateurs' }
+      },
+      {
+        path: 'applis/autorisees', // child route path
+        component: AppsautoriseComponent, // child route component that the router renders
+        data: { title: 'Liste des applications autorisées' }
+      },
+      {
+        path: 'dev/applications', // child route path
+        component: ApplicationsComponent, // child route component that the router renders
+        data: { title: 'Liste de mes applications' }
       }
     ],
   }

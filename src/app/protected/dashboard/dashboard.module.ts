@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
+import { HistoriqueconnexionComponent } from './historiqueconnexion/historiqueconnexion.component';
+import { ListecompteComponent } from './listecompte/listecompte.component';
+import { AppsautoriseComponent } from './appsautorise/appsautorise.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, StatistiqueComponent],
+  declarations: [DashboardComponent, StatistiqueComponent, HistoriqueconnexionComponent, ListecompteComponent, AppsautoriseComponent],
   imports: [
-    CommonModule,
     SharedModule
   ]
 })
-export class DashboardModule { }
+export class DashboardModule{ }

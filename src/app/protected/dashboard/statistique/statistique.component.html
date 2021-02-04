@@ -2,12 +2,296 @@
   <div class="container">
 
     <div class="overview-page">
-      <h2>Une Nouvelle Affaire</h2>
+      <h2>Tableau de bord</h2>
+    </div>
+
+    <div class="row mg-t-3 ">
+      <div class="col-md-12 ">
+        <div id="breadcrumb" class="breadcrumb-dash" style="border-bottom: 1px solid #ddd; margin-bottom: 15px;">
+        	<a href="#!" class="breadcrumb-close">Accueil</a>
+        	<a href="#!" class="breadcrumb-link">
+            <img src="assets/images/home-96.png" alt="Home Icon CSU" style="height: 15px;">
+            Accueil
+          </a>
+        	<a href="#!" class="breadcrumb-link">Tableau de bord</a>
+        	<a href="#breadcrumb" class="breadcrumb--active">Active Level</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <a routerLink="/dashboard/liste/compte"  class="box-dash">
+          <img src="assets/images/account-64.png" alt="" style="float: left; margin-right: 7px; width: 30px;">
+        	<h2 class="title">Comptes</h2>
+        	<h3 class="subtitle">Liste des mes comptes</h3>
+        	<span class="number">
+            <span class="chip primary">12</span>
+          </span>
+
+          <div class="text-center">
+            <img src="assets/images/online-connection.jpg" alt="" style="height: 100px;">
+          </div>
+        	<p class="text">Gérez tous vos comptes au même endroit et accédez aux applis en toute sérénité.</p>
+
+          <span class="text-center more-infos-box" style="display: block;">
+            Consulter
+          </span>
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a routerLink="/dashboard/applis/autorisees" class="box-dash">
+          <img src="assets/images/app-connected.png" alt="" style="float: left; margin-right: 7px; width: 30px;">
+        	<h2 class="title">Applications</h2>
+        	<h3 class="subtitle">Applications autorisées</h3>
+          <span class="number">
+            <span class="chip primary">12</span>
+          </span>
+
+          <div class="text-center">
+            <img src="assets/images/api-connect.png" alt="" style="height: 100px;"/>
+          </div>
+
+        	<p class="text">Almost before we knew it, we had left the ground.</p>
+
+          <div class="text-center more-infos-box">
+            Consulter
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div class="box-dash">
+          <img src="assets/images/secure-account.png" alt="" style="float: left; margin-right: 7px; width: 30px;">
+        	<h2 class="title">Confidentialité</h2>
+        	<h3 class="subtitle">Nous protégons bien vos comptes</h3>
+          <span class="number">
+            <span class="chip primary">12</span>
+          </span>
+
+          <div class="row">
+            <div class="col-md-6">
+                <p class="text">Almost before we knew it, we had left the ground.</p>
+            </div>
+            <div class="col-md-6 pd-t-5">
+              <img src="assets/images/app-policy.jpg" alt="" style="height: 150px;">
+            </div>
+          </div>
+
+
+          <div class="text-center more-infos-box">
+            Consulter
+          </div>
+        </div>
+      </div>
     </div>
 
 
-    <div class="" style="min-height: 700px; background: #fff;">
+    <div class="card-dash-csu">
 
+      <div class="liste-dash text-left">
+        <img src="assets/images/account-64.png" alt="" style="float: left; margin-right: 7px; width: 30px;"/>
+        <h2 class="title">Dernières Connexion</h2>
+        <h3 class="subtitle">Liste des mes comptes</h3>
+
+        <a routerLink="/dashboard/historique/connexions" class="more-infos">
+            Voir plus
+            <img src="assets/images/more-infos.svg" alt="" style="">
+        </a>
+      </div>
+
+      <div class="table-responsive-vertical shadow-z-1" style="box-shadow:0px 0px 2px rgba(0,0,0,0.0005);">
+      <table id="table" class="table table-hover table-mc-light-blue" style="margin: 0px 0px 15px 0px;">
+        <thead>
+        <tr>
+          <th>Id Requête</th>
+          <th>Application</th>
+          <th>Compte</th>
+          <th>Détail</th>
+          <th>Date</th>
+          <th>Etat</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+       <tbody>
+
+         <tr>
+           <td data-title="Id Requête">
+             1804-0180-3426-8
+           </td>
+           <td data-title="Application"> Ndikum Brice Lambi </td>
+           <td data-title="Compte">Noel.kenfack</td>
+           <td data-title="Détail">60 500</td>
+           <td data-title="DATE">13/12/2020</td>
+           <td data-title="STATUT">
+             <span class="csu-badge csu-badge-warn">EN ATTENTE</span>
+           </td>
+           <td data-title="Action" style="white-space: nowrap;">
+             <div class="row">
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/user-icon.svg" alt="" style=""/><br/>
+                   <span>Profil App</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/download-paiement.svg" alt=""/><br/>
+                   <span>Signaler</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link" title="Navigateur, Appareil, IP">
+                   <img src="assets/images/eye-consulter.svg" alt=""/><br/>
+                   <span>Consulter</span>
+                 </a>
+               </div>
+             </div>
+           </td>
+         </tr>
+
+         <tr>
+           <td data-title="Id Requête">
+             1801-0181-1501-0
+           </td>
+           <td data-title="Application"> Tankou Tatah Stéphane </td>
+           <td data-title="Compte">Noel.kenfack</td>
+           <td data-title="Détail">60 500</td>
+           <td data-title="DATE">13/12/2020</td>
+           <td data-title="STATUT">
+             <span class="csu-badge csu-badge-success">Validé</span>
+           </td>
+           <td data-title="Action" style="white-space: nowrap;">
+             <div class="row">
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/user-icon.svg" alt="" style=""/><br/>
+                   <span>Profil App</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/download-paiement.svg" alt=""/><br/>
+                   <span>Signaler</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link" title="Navigateur, Appareil, IP">
+                   <img src="assets/images/eye-consulter.svg" alt=""/><br/>
+                   <span>Consulter</span>
+                 </a>
+               </div>
+             </div>
+           </td>
+         </tr>
+
+         <tr>
+           <td data-title="Id Requête">
+             1801-0181-1501-0
+           </td>
+           <td data-title="Application"> Ateba Atanga Josiane </td>
+           <td data-title="Compte">Noel.kenfack</td>
+           <td data-title="Détail">60 500</td>
+           <td data-title="DATE">13/12/2019</td>
+           <td data-title="STATUT">
+             <span class="csu-badge csu-badge-primary">Payé</span>
+           </td>
+           <td data-title="Action" style="white-space: nowrap;">
+             <div class="row">
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/user-icon.svg" alt="" style=""/><br/>
+                   <span>Profil App</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/download-paiement.svg" alt=""/><br/>
+                   <span>Signaler</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link" title="Navigateur, Appareil, IP">
+                   <img src="assets/images/eye-consulter.svg" alt=""/><br/>
+                   <span>Consulter</span>
+                 </a>
+               </div>
+             </div>
+           </td>
+         </tr>
+
+         <tr>
+           <td data-title="Id Requête">
+             1801-0181-1501-0
+           </td>
+           <td data-title="Application"> Ateba Atanga Josiane </td>
+           <td data-title="Compte">Noel.kenfack</td>
+           <td data-title="Détail">60 500</td>
+           <td data-title="DATE">13/12/2019</td>
+           <td data-title="STATUT">
+             <span class="csu-badge csu-badge-danger">Rejeté</span>
+           </td>
+           <td data-title="Action" style="white-space: nowrap;">
+             <div class="row">
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/user-icon.svg" alt="" style=""/><br/>
+                   <span>Profil App</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/download-paiement.svg" alt=""/><br/>
+                   <span>Signaler</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link" title="Navigateur, Appareil, IP">
+                   <img src="assets/images/eye-consulter.svg" alt=""/><br/>
+                   <span>Consulter</span>
+                 </a>
+               </div>
+             </div>
+           </td>
+         </tr>
+
+         <tr>
+           <td data-title="Id Requête">
+             1804-0180-3426-8
+           </td>
+           <td data-title="Application"> Ndikum Brice Lambi </td>
+           <td data-title="Compte">Noel.kenfack</td>
+           <td data-title="Détail">60 500</td>
+           <td data-title="DATE">13/12/2020</td>
+           <td data-title="STATUT">
+             <span class="csu-badge csu-badge-warn">EN ATTENTE</span>
+           </td>
+           <td data-title="Action" style="white-space: nowrap;">
+             <div class="row">
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/user-icon.svg" alt="" style=""/><br/>
+                   <span>Profil App</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link">
+                   <img src="assets/images/download-paiement.svg" alt=""/><br/>
+                   <span>Signaler</span>
+                 </a>
+               </div>
+               <div class="col-md-4 col-xs-4 text-center">
+                 <a href="#" class="action-tb-link" title="Navigateur, Appareil, IP">
+                   <img src="assets/images/eye-consulter.svg" alt=""/><br/>
+                   <span>Consulter</span>
+                 </a>
+               </div>
+             </div>
+           </td>
+         </tr>
+
+       </tbody>
+      </table>
+      </div>
     </div>
 
   </div>

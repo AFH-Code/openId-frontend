@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxUiLoaderService } from "ngx-ui-loader";
 
 import { PublicheaderComponent } from './publicheader/publicheader.component';
 import { PublicfooterComponent } from './publicfooter/publicfooter.component';
@@ -15,7 +16,8 @@ import { ProtectedasidebarComponent } from './protectedasidebar/protectedasideba
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderService
   ],
   exports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { ProtectedasidebarComponent } from './protectedasidebar/protectedasideba
     PublicfooterComponent,
     ProtectedheaderComponent,
     ProtectedfooterComponent,
-    ProtectedasidebarComponent
+    ProtectedasidebarComponent,
+    NgxUiLoaderService
   ]
 })
 

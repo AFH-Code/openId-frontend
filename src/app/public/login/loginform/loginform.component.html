@@ -20,20 +20,19 @@
                 </div>
 
                 <div class="form-group">
-                  <select name="" class="form-control">
-                    <option value="">Type d'identifiant</option>
-                    <option value="">Email</option>
-                    <option value="">Téléphone</option>
-                    <option value="">Pseudo</option>
+                  <select name="typecompte" class="form-control" [ngModel]="selectedDeviceObj" (ngModelChange)="onChangeObj($event)">
+                    <option [value]="null" disabled>Type d'identifiant</option>
+                    <option [ngValue]="i" *ngFor="let i of deviceObjects">{{i.name}}</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" name="" value="" placeholder="Email"/>
+                  <input type="{{ selectedDeviceObj.type }}" class="form-control" name="username" value="{{ selectedDeviceObj.default }}" placeholder="Entrez votre {{ selectedDeviceObj.name }}"/>
                 </div>
 
                 <div class="form-group">
-                  <input type="password" class="form-control" name="" value="" placeholder="Mot de passe"/>
+                  <input id="password-field" type="password" class="form-control" name="" value="" placeholder="Mot de passe">
+                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 </div>
 
                 <div class="" style="margin-top: 15px;">

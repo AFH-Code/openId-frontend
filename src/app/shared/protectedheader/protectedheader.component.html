@@ -1,9 +1,9 @@
-<header class="header header-admin-user">
-  <div class="panel-hamburger" style="float: left;">
-    <a id="hamburger" class="toggle-dashboard-nav hamburger-icon-container" (click)="togglehamburger()">
-      <span class="hamburger-icon"></span>
-    </a>
-  </div>
+<header class="header header-admin-user ">
+    <div class="panel-hamburger" style="float: left;">
+      <a id="hamburger" class="toggle-dashboard-nav hamburger-icon-container" (click)="togglehamburger()">
+        <span class="hamburger-icon"></span>
+      </a>
+    </div>
 
   <a routerLink="/" class="logo">
     AFHUnt
@@ -28,7 +28,7 @@
         </a>
       </li>
       <li>
-        <a href="#about">
+        <a routerLink="/dashboard/applis/autorisees">
           <span class="item-link-applis">
             Mes Applis
           </span>
@@ -43,7 +43,7 @@
             <span class="fa fa-chevron-down"></span>
           </a>
           <div class="profil-dropdown">
-            <a href="/dashboard/" style="line-height: 15px;">
+            <a routerLink="/dashboard/" style="line-height: 15px;">
               <h5>Noel Kenack</h5>
               <div class="">
                 noel.kenfack@yahoo.fr

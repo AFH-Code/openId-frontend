@@ -28,17 +28,17 @@ export class ProtectedheaderComponent implements OnInit {
       this.navOpen();
     }
 
-    $( ".left-sidebar-lg-redim").toggle(100, function(){
+    $( ".left-sidebar-lg-redim").toggle(10, function(){
       if ($(".left-sidebar-lg-redim").is(":hidden")){
-      $(".left-sidebar-lg-redim").hide('slow');
-
+        $(".left-sidebar-lg-redim").hide('slow');
         $('#main-panel-content').removeClass("resize-lg-left-navigation");
         $('#main-panel-content').addClass("resize-sm-left-navigation");
+        $(".footer-dash-user").removeClass("resize-pd-footer");
       }else{
         $('#main-panel-content').removeClass("resize-sm-left-navigation");
         $('#main-panel-content').addClass("resize-lg-left-navigation");
-
-      $(".left-sidebar-lg-redim").show('slow');
+        $(".left-sidebar-lg-redim").show('slow');
+        $(".footer-dash-user").addClass("resize-pd-footer");
       }
     });
   }

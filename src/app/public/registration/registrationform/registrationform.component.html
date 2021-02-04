@@ -18,7 +18,7 @@
                 <div class="text-center" style="margin-bottom: 20px;">
                   <img src="assets/images/utilisateur-100.png" alt=".." style="height: 50px;"/>
                 </div>
-                
+
                 <form style="max-width: 100%; display: block;"
 
                 name="form"
@@ -104,12 +104,13 @@
 
                   <div class="form-group mb-4">
                     <label for="password" class="sr-only">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe"
+                    <input type="password" name="password" id="password-field" class="form-control" placeholder="Mot de passe"
                     [(ngModel)]="form.password"
                     required
                     minlength="5"
                     #password="ngModel"
                     />
+                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                   </div>
 
                   <div class="" style="margin-top: 15px;">

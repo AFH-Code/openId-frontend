@@ -6,6 +6,9 @@ import { User } from '../../../models/user/User.model';
 import { UserService } from '../../../services/user/user.service';
 import { AuthService } from '../../../services/user/auth.service';
 
+declare var jquery:any;
+declare var $ :any;
+
 @Component({
   selector: 'app-registrationform',
   templateUrl: './registrationform.component.html',
@@ -26,6 +29,20 @@ export class RegistrationformComponent implements OnInit {
 
     ngOnInit(): void {
       this.initForm();
+      this.togglePassWord();
+    }
+
+    togglePassWord()
+    {
+      $(".toggle-password").click(function(){
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
     }
 
     //CONTRUCTION DU TEMPLATE

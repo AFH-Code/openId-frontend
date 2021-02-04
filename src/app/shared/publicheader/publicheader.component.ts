@@ -11,7 +11,7 @@ declare var $ :any;
 
 export class PublicheaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(){ }
 
   ngOnInit(): void {
   }

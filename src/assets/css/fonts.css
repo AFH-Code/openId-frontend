@@ -44,11 +44,6 @@
 }
 
 @font-face {
-  font-family: "OpenSans-Regular";
-  src: url("../fonts/OpenSans-Regular.eot?#iefix") format("embedded-opentype"),
-	   url("../fonts/OpenSans-Regular.ttf")  format("truetype");
-}
-@font-face {
   font-family: "OpenSans-Light";
   src: url("../fonts/OpenSans-Light.eot?#iefix") format("embedded-opentype"),
 	   url("../fonts/OpenSans-Light.ttf")  format("truetype");
@@ -96,4 +91,8 @@
   font-family: "Quicksand-Bold";
   src: url("../fonts/Quicksand-Bold.eot?#iefix") format("embedded-opentype"),
 	   url("../fonts/Quicksand-Bold.ttf")  format("truetype");
+}
+@font-face {
+  font-family: "Lobster-Regular";
+  src: url("../fonts/Lobster-Regular.ttf") format("truetype");
 }
