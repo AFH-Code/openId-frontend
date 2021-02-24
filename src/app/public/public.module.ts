@@ -5,6 +5,7 @@ import { PublicRoutingModule } from './public-routing.module';
 import { HomeModule } from './home/home.module';
 import { RegistrationModule } from './registration/registration.module';
 import { LoginModule } from './login/login.module';
+import { SinglepageModule } from './singlepage/singlepage.module';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ import { LoginModule } from './login/login.module';
     PublicRoutingModule,
     HomeModule,
     RegistrationModule,
-    LoginModule
+    LoginModule,
+    SinglepageModule
   ]
 })
 export class PublicModule{ }

@@ -7,10 +7,10 @@ import { Subject, Observable  } from 'rxjs';
 export class ConfigService {
 
   ihm : string = 'public'; //Interface Homme Machine :::IHM
-
   constructor() {}
 
   setIHM(ihm): void {
     this.ihm = ihm;
   }
+  
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -10,10 +11,11 @@ declare var $ :any;
 })
 
 export class ProtectedheaderComponent implements OnInit {
-
-  constructor() { }
+  currentuser: any;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.currentuser = this.userService.getCurrentUser();
   }
 
   opendropDown(){

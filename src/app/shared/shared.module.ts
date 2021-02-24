@@ -9,9 +9,10 @@ import { ProtectedheaderComponent } from './protectedheader/protectedheader.comp
 import { ProtectedfooterComponent } from './protectedfooter/protectedfooter.component';
 import { ProtectedasidebarComponent } from './protectedasidebar/protectedasidebar.component';
 import { HelperDependenciesModule } from './modules/helper-dependencies.module';
+import { ConnectheaderComponent } from './connectheader/connectheader.component';
 
 @NgModule({
-  declarations: [ PublicheaderComponent, PublicfooterComponent, ProtectedheaderComponent, ProtectedfooterComponent, ProtectedasidebarComponent ],
+  declarations: [ PublicheaderComponent, PublicfooterComponent, ProtectedheaderComponent, ProtectedfooterComponent, ProtectedasidebarComponent, ConnectheaderComponent ],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,7 +29,9 @@ import { HelperDependenciesModule } from './modules/helper-dependencies.module';
     PublicfooterComponent,
     ProtectedheaderComponent,
     ProtectedfooterComponent,
-    ProtectedasidebarComponent
+    ProtectedasidebarComponent,
+    ConnectheaderComponent,
+    HelperDependenciesModule
   ]
 })
 

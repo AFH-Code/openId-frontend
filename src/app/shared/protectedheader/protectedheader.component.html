@@ -35,15 +35,17 @@
         </a>
       </li>
       <li>
-          <a  class="open-profils-user" (click)="opendropDown()">
-            <img src="assets/images/utilisateur-100.png" alt=".."/>
-            <span class="pseudo-user">
-              Noel Kenfack
+          <a class="open-profils-user" (click)="opendropDown()">
+            <span *ngIf="currentuser != null">
+              <img src="assets/images/utilisateur-100.png" alt=".."/>
+              <span class="pseudo-user">
+                Noel Kenfack
+              </span>
             </span>
             <span class="fa fa-chevron-down"></span>
           </a>
           <div class="profil-dropdown">
-            <a routerLink="/dashboard/" style="line-height: 15px;">
+            <a routerLink="update/account" style="line-height: 15px;">
               <h5>Noel Kenack</h5>
               <div class="">
                 noel.kenfack@yahoo.fr

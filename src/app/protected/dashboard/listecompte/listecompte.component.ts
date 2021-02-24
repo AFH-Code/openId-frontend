@@ -8,6 +8,7 @@ declare var $ :any;
   templateUrl: './listecompte.component.html',
   styleUrls: ['./listecompte.component.scss']
 })
+
 export class ListecompteComponent implements OnInit {
 
   constructor() { }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from 'ngx-toastr';
+
 import { User } from '../../../models/user/User.model';
 import { UserService } from '../../../services/user/user.service';
 import { AuthService } from '../../../services/user/auth.service';
@@ -25,7 +28,9 @@ export class RegistrationformComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
                 private userService: UserService,
                 private router: Router,
-                private authService: AuthService) { }
+                private authService: AuthService,
+                private spinner: NgxSpinnerService, private toastrService: ToastrService
+              ) { }
 
     ngOnInit(): void {
       this.initForm();
@@ -56,31 +61,42 @@ export class RegistrationformComponent implements OnInit {
       });
     }
 
-    onSubmitForm() {
-       const formValue = this.userForm.value;
-       const newUser = new User(
-         formValue['firstName'],
-         formValue['lastName'],
-         formValue['username'],
-         formValue['password']
-       );
-       this.userService.addUser(newUser);
-       this.router.navigate(['/users']);
-     }
+    // onSubmitForm() {
+    //    const formValue = this.userForm.value;
+    //    const newUser = new User(
+    //      formValue['firstName'],
+    //      formValue['lastName'],
+    //      formValue['username'],
+    //      formValue['password']
+    //    );
+    //    this.userService.addUser(newUser);
+    //    this.router.navigate(['/users']);
+    //  }
 
 
      //Méthode templateUrl
      onSubmit(form: NgForm): void {
+       this.spinner.show();
        this.authService.register(this.form).subscribe(
          data => {
            console.log(data);
            this.isSuccessful = true;
            this.isSignUpFailed = false;
+
+           this.spinner.hide();
+           this.router.navigate(['/singlepage/account/activation']);
          },
          err => {
            this.errorMessage = err.error.message;
            console.log(err);
            this.isSignUpFailed = true;
+
+           this.spinner.hide();
+           this.toastrService.error('Error de connexion', 'Major Error', {
+             timeOut: 3000,
+             closeButton: true,
+             progressAnimation: 'increasing'
+           });
          }
        );
      }

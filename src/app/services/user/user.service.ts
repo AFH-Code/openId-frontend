@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable   } from 'rxjs';
 import { User } from '../../models/user/User.model';
 import { HttpClient } from '@angular/common/http';
+import { TokenStorageService } from '../token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private httpClient: HttpClient) { }
+  usersObjet = [];
+  constructor(private httpClient: HttpClient, private token: TokenStorageService) { }
 
   addUser(user: User) {
     let appareilObject = {
@@ -27,6 +28,26 @@ export class UserService {
         console.log('Erreur ! : ' + error);
       }
     );
+  }
+
+  getCurrentUser(){
+    let curent_liste = JSON.parse(this.token.getListeUser());
+    if(curent_liste){
+      this.usersObjet = curent_liste;
+    }
+    for(let entry of this.usersObjet){
+      if(entry.connected_user == 1)
+      {
+        return entry;
+      }
+    }
+    return null;
+  }
+
+  getListeUser()
+  {
+    let curent_liste = JSON.parse(this.token.getListeUser());
+    return curent_liste;
   }
 
 }

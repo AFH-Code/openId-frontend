@@ -8,9 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     PublicModule,
-    ProtectedModule,
-    BrowserAnimationsModule
+    ProtectedModule
   ]
 })
 

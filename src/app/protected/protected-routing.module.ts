@@ -6,6 +6,7 @@ import { ApplicationsComponent } from './developper/applications/applications.co
 import { HistoriqueconnexionComponent } from './dashboard/historiqueconnexion/historiqueconnexion.component';
 import { ListecompteComponent } from './dashboard/listecompte/listecompte.component';
 import { AppsautoriseComponent } from './dashboard/appsautorise/appsautorise.component';
+import { UpdateuserComponent } from './dashboard/updateuser/updateuser.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
         path: 'accueil', // child route path
         component: StatistiqueComponent, // child route component that the router renders
         data: { title: 'Opérations sur le compte' }
+      },
+      {
+        path: 'update/account', // child route path
+        component: UpdateuserComponent, // child route component that the router renders
+        data: { title: 'Modification du profil Utilisateur' }
       },
       {
         path: 'historique/connexions', // child route path
