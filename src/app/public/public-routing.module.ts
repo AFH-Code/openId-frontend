@@ -69,7 +69,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'account/activation', // child route path
+        path: 'account/activation/:id/:typealert/:alertstatus', // child route path
         component: ActiveaccountComponent, // child route component that the router renders
         data: { title: 'Formulaire d\'inscription' }
       }

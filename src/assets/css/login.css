@@ -1593,16 +1593,19 @@ thead th {
   border-radius: 4px;
   box-shadow: 0px 1px 10px 2px #D6D9E4; padding: 15px 15px 0px 15px; margin: 15px 0px;
 }
+
 .page-link {
     margin: 0px 3px!important;
     font-family: Muli-Regular;
 }
+
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
     background-color: #007FFF!important;
     border-color:  #007FFF!important;
 }
+
 .btn-text-submit{
   font-family: OpenSans-Bold;
   text-align: center;

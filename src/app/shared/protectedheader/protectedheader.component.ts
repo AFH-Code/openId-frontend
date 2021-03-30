@@ -45,12 +45,10 @@ export class ProtectedheaderComponent implements OnInit {
     });
   }
 
-  // Wenn die Navi geschlossen wird, Klasse für »offen« entfernen
   navClose() {
     document.body.classList.remove('hamburger-active');
   }
 
-  // Wenn die Navi geöffnet wird, Klasse für »geschlossen« entfernen
   navOpen() {
     document.body.classList.add('hamburger-active');
   }

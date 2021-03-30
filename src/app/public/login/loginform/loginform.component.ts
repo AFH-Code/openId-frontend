@@ -46,6 +46,7 @@ export class LoginformComponent implements OnInit {
     this.spinner.show();
     this.authService.login(this.form).subscribe(
       data => {
+        console.log(data);
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.addUserLocalListe(data.user);
         this.isLoginFailed = false;
@@ -54,6 +55,7 @@ export class LoginformComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       },
       err => {
+        console.log(err);
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
         this.spinner.hide();

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TokenStorageService } from '../../../services/token-storage.service';
+
 declare var jquery:any;
 declare var $ :any;
 
@@ -10,10 +12,13 @@ declare var $ :any;
 })
 export class ListeAccountComponent implements OnInit {
 
-  constructor() { }
+  listeaccount: any[];
+  constructor(private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
     this.dropdown();
+
+    this.listeaccount = JSON.parse(this.tokenStorageService.getListeUser());
   }
 
   dropdown()
@@ -25,4 +30,10 @@ export class ListeAccountComponent implements OnInit {
        }
     });
   }
+
+  openDropDown(id: any)
+  {
+    $('.dropdown-menu-'+id).toggleClass("dropdown__menu--active");
+  }
+  
 }

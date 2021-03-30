@@ -25,6 +25,9 @@ export class RegistrationformComponent implements OnInit {
     isSignUpFailed = false;
     errorMessage = '';
 
+    public imagePath;
+    url: string;
+
     constructor(private formBuilder: FormBuilder,
                 private userService: UserService,
                 private router: Router,
@@ -84,7 +87,8 @@ export class RegistrationformComponent implements OnInit {
            this.isSignUpFailed = false;
 
            this.spinner.hide();
-           this.router.navigate(['/singlepage/account/activation']);
+           this.router.navigate(['/singlepage/account/activation', 
+           data.user.id, data.user.notificationtype, data.user.notificationstatus]);
          },
          err => {
            this.errorMessage = err.error.message;

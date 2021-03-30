@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BrowserStack } from 'protractor/built/driverProviders';
 
 const TOKEN_KEY = "auth-token";
 const USER_KEY_LISTE = "auth-user-liste";
@@ -52,6 +53,25 @@ export class TokenStorageService {
     {
       this.usersObjet.push(user);
     }
+    window.localStorage.setItem(USER_KEY_LISTE, JSON.stringify(this.usersObjet));
+  }
+
+  public UpdateUserLocalListe(user): void{
+    let curent_liste = JSON.parse(window.localStorage.getItem(USER_KEY_LISTE));
+    if(curent_liste){  //Si la liste des utilisateurs n'est pas null on l'hydrate à l'objet users
+      this.usersObjet = curent_liste;
+    }
+
+    for(let entry of this.usersObjet){ //on boucle sur cette liste
+      if(entry.id == user.id) //si le compte est déjà est en local, on le connecte
+      {
+        entry.firstname = user.firstname;
+        entry.lastname = user.lastname;
+        entry.imgprofil = user.imgprofil;
+        break;
+      }
+    }
+
     window.localStorage.setItem(USER_KEY_LISTE, JSON.stringify(this.usersObjet));
   }
 }

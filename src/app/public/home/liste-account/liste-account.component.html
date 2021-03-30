@@ -9,16 +9,17 @@
           </div>
           <div class="" id="user-list">
             <ul>
-              <li>
+
+              <li *ngFor="let account of listeaccount; ">
                 <div class="content-account">
                   <img src="assets/images/utilisateur-100.png" alt=".." style="" class="account-profil"/>
                   <div>
                     <div class="" style="position: absolute; right: 20px; top: 15px; z-index: 50;">
-                      <div class="dropdown-btn">
+                      <div class="dropdown-btn" (click)="openDropDown(account.id)">
                         <a href="javascript:void(0)" class="coustom-btn-dropdown-table">
                           <span class="fa fa-ellipsis-h"></span>
                         </a>
-                        <div class="dropdown__menu">
+                        <div class="dropdown__menu dropdown-menu-{{ account.id }}">
                           <a href="#!" class="dropdown__option">
                             <span class="fa fa-download"></span>
                             Télécharger
@@ -33,99 +34,15 @@
                     </div>
 
 
-                    <h1>Maskedman</h1>
-                    <h2>Dead inside but alive</h2>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="content-account">
-                    <img src="assets/images/utilisateur-100.png" alt=".." style="" class="account-profil"/>                  <div>
-                    <div class="" style="position: absolute; right: 20px; top: 15px; z-index: 50000;">
-                      <div class="dropdown-btn">
-                        <a href="#!" class="coustom-btn-dropdown-table">
-                          <span class="fa fa-ellipsis-h"></span>
-                        </a>
-                        <div class="dropdown__menu">
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-download"></span>
-                            Télécharger
-                          </a>
-
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-money"></span>
-                            Refaire
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <h1>Maskedman</h1>
+                    <h1>{{ account.firstname }} {{ account.lastname }} 
+                      <a routerLink="/dashboard/accueil" *ngIf="account.connected_user == 1" class="btn btn-primary float-right" style="margin-right: 40px; margin-top: 10px;">Dashboard</a>
+                    </h1>
                     <h2>Dead inside but alive</h2>
                   </div>
                 </div>
               </li>
 
-              <li class="active-accout">
-                <div class="content-account">
-                  <img src="assets/images/utilisateur-100.png" alt=".." style="" class="account-profil"/>
-                  <div>
-                    <div class="" style="position: absolute; right: 20px; top: 15px; z-index: 50000;">
-                      <div class="dropdown-btn">
-                        <a href="#!" class="coustom-btn-dropdown-table">
-                          <span class="fa fa-ellipsis-h"></span>
-                        </a>
-                        <div class="dropdown__menu">
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-download"></span>
-                            Télécharger
-                          </a>
 
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-money"></span>
-                            Refaire
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <h1>Maskedman</h1>
-                    <h2>Dead inside but alive</h2>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="content-account">
-                  <img src="assets/images/utilisateur-100.png" alt=".." style="" class="account-profil"/>
-                  <div>
-                    <div class="" style="position: absolute; right: 20px; top: 15px; z-index: 50000;">
-                      <div class="dropdown-btn">
-                        <a href="#!" class="coustom-btn-dropdown-table">
-                          <span class="fa fa-ellipsis-h"></span>
-                        </a>
-                        <div class="dropdown__menu">
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-download"></span>
-                            Télécharger
-                          </a>
-
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-money"></span>
-                            Refaire
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <h1>Maskedman</h1>
-                    <h2>Dead inside but alive</h2>
-                  </div>
-                </div>
-              </li>
             </ul>
           </div>
 

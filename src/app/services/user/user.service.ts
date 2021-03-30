@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable   } from 'rxjs';
 import { User } from '../../models/user/User.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { TokenStorageService } from '../token-storage.service';
+import { appSettings } from '../../helpers/appSettings';
+import { map } from  'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+const httpOptions2 = {
+  headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data', 'Accept': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   usersObjet = [];
   constructor(private httpClient: HttpClient, private token: TokenStorageService) { }
@@ -50,4 +61,17 @@ export class UserService {
     return curent_liste;
   }
 
+  activeAccount(data: any): Observable<any>{
+    return this.httpClient.post(appSettings.API_ENDPOINT_BASE + 'validate/account', data , appSettings.httpOptions);
+  }
+
+  updateDefault(formData){
+    let user = this.getCurrentUser();
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_BASE + 'update/user/' + user.id , formData, {  
+      reportProgress: true,  
+      observe: 'events'
+    });  
+  }
+
 }
+
