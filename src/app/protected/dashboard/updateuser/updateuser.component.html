@@ -1,46 +1,39 @@
 <div id="main-panel-content" class="resize-lg-left-navigation" style="padding-top: 83px;">
   <div class="container">
 
-    <div class="overview-page">
-      <h2>Tableau de bord</h2>
-    </div>
+    <h2>
+      Gestions de paramètres de votre profil
+      <a class="nav-link float-right" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+    </h2>
 
-    <div class="form-group" *ngIf="filedata != null">
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: {{ filedata.progress }}%" aria-valuenow="{{ filedata.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="mg-t-3">
+    
+      <div id="breadcrumb" class="breadcrumb-dash" style="border-bottom: 1px solid #ddd; margin-bottom: 15px; min-width: 100%;">
+        <a href="#!" class="breadcrumb-close">Accueil</a>
+        <a href="#!" class="breadcrumb-link">
+          <img src="assets/images/home-96.png" alt="Home Icon CSU" style="height: 15px;">
+          Accueil
+        </a>
+        <a href="#!" class="breadcrumb-link">Tableau de bord</a>
+        <a href="#breadcrumb" class="breadcrumb--active">Active Level</a>
       </div>
-    </div>
 
-    <div class="row mg-t-3 ">
-      <div class="col-md-12 ">
-        <div id="breadcrumb" class="breadcrumb-dash" style="border-bottom: 1px solid #ddd; margin-bottom: 15px;">
-        	<a href="#!" class="breadcrumb-close">Accueil</a>
-        	<a href="#!" class="breadcrumb-link">
-            <img src="assets/images/home-96.png" alt="Home Icon CSU" style="height: 15px;">
-            Accueil
-          </a>
-        	<a href="#!" class="breadcrumb-link">Tableau de bord</a>
-        	<a href="#breadcrumb" class="breadcrumb--active">Active Level</a>
+      <div class="form-group" *ngIf="filedata != null">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ filedata.progress }}%" aria-valuenow="{{ filedata.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
-    </div>
     
-    <ngx-spinner
-      bdColor="rgba(51,51,51,0.8)"
-      size="medium"
-      color="#fff"
-      type="ball-scale-multiple"
-    >
-      <p style="font-size: 20px; color: white">Loading...</p>
-    </ngx-spinner>
-
+  </div>
     <div class="row">
       <div class="col-md-6">
         <div class="card-dash-csu">
           <div class="liste-dash text-left">
-            <img src="assets/images/account-64.png" alt="" style="float: left; margin-right: 7px; width: 30px;"/>
-            <h2 class="title">Dernières Connexion</h2>
-            <h3 class="subtitle">Liste des mes comptes</h3>
+            <img [src]="images.defaultprofil" alt="" class="form-detail-img-circle"/>
+            <h2 class="title">
+              <strong>Informations Publique</strong>
+            </h2>
+            <h3 class="subtitle">Informations utilisées pour l'identification de votre compte</h3>
           </div>
 
           <form name="form"
@@ -56,7 +49,7 @@
               required
               minlength="2"
               #nom="ngModel"
-              placeholder="Entrez votre nom de famille" [ngClass]="nom.touched ? (nom.invalid ? 'is-invalid' : 'is-valid') : ''" value="{{ form.nom }}"/>
+              placeholder="Entrez votre nom de famille" [ngClass]="nom.touched ? (nom.invalid ? 'is-invalid' : 'is-valid') : ''"/>
              
               <div class="invalid-feedback" *ngIf="nom.invalid">
                 <div *ngIf="nom.errors.required">Le champ Nom est requis</div>
@@ -76,7 +69,7 @@
               required
               minlength="2"
               #prenom="ngModel"
-              placeholder="Entrez votre prenom"  [ngClass]="prenom.touched ? (prenom.invalid ? 'is-invalid' : 'is-valid') : ''" value="{{ form.prenom }}"/>
+              placeholder="Entrez votre prenom"  [ngClass]="prenom.touched ? (prenom.invalid ? 'is-invalid' : 'is-valid') : ''"/>
              
               <div class="invalid-feedback" *ngIf="prenom.invalid">
                 <div *ngIf="prenom.errors.required">Le champ Prenom est requis</div>
@@ -87,14 +80,36 @@
             </div>
 
             
-            <div class="form-group">
-              <div class="custom-file mg-b-3">
-                <input type="file" class="custom-file-input" id="customFile" (change)="fileEvent($event)"/>
-                <label class="custom-file-label" for="customFile"> {{ currentFileName }}</label>
-              </div>
+            <div class="form-group" *ngIf="currentFileName">
+              <div class="alert alert-success">{{ currentFileName }}</div>
             </div>
 
-            <div class="text-center"><img [src]="url" height="200" *ngIf="url" style="height: 70px;"/> <br/></div>
+            <div class="row">
+                <div class="col-md-6">
+
+                  <div class="text-center img-profil-panel">
+                    <img [src]="currentuser.imgprofil" alt="" *ngIf="currentuser && currentuser.imgprofil != '' && url == null" style="max-width: 100%; max-height: 100%;"/>
+
+                    <img [src]="images.imgdefault" alt="" *ngIf="currentuser && currentuser.imgprofil == '' && url == null" style="max-width: 100%; max-height: 100%;"/>
+
+                    <img [src]="url" height="200" *ngIf="url" style="max-width: 100%; max-height: 100%;"/>
+                  </div>
+                  
+                </div>
+
+                <div class="col-md-6">
+                  <label for="import-imgprofil" class="text-center img-profil-import">
+                    
+                    <div>
+                      <span class="fa fa-camera"></span>
+                    </div>
+                    <span>Importez une nouvelle photo de profil</span>
+
+                  </label>
+                  <input type="file" id="import-imgprofil" style="opacity: 0;" (change)="fileEvent($event)"/>
+                </div>
+            </div>
+
 
 
 
@@ -130,25 +145,119 @@
       <div class="col-md-6">
         <div class="card-dash-csu">
           <div class="liste-dash text-left">
-            <img src="assets/images/account-64.png" alt="" style="float: left; margin-right: 7px; width: 30px;"/>
-            <h2 class="title">Dernières Connexion</h2>
-            <h3 class="subtitle">Liste des mes comptes</h3>
+            <img [src]="images.defaultprofil" alt="" class="form-detail-img-circle"/>
+            <h2 class="title">
+              <strong>Récupération du compte</strong>
+            </h2>
+            <h3 class="subtitle">Contacts de notifications</h3>
           </div>
 
           <form class="" action="index.html" method="post">
             <div class="form-group">
-                <input type="text" name="" value="" style="" class="form-control dash-input-lg" placeholder="Email">
+                <input type="text" name="" value="" class="form-control dash-input-lg" placeholder="Email">
             </div>
 
             <div class="form-group">
-              <input type="text" name="" value="" style="" class="form-control dash-input-lg" placeholder="Téléphone">
+              <input type="text" name="" value="" class="form-control dash-input-lg" placeholder="Téléphone">
             </div>
-            <div class="form-group">
+
+            <fieldset class="form__fieldset">
+              <legend class="form__legend">
+                <div class="libele-item-cart-follow">
+                  Ligne 2 de contacts (optionnelle)
+                </div>
+              </legend>
+       
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email"/>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Téléphone"/>
+                  </div>
+                </div>
+              </div>
+           </fieldset>
+
+            <div class="form-group mg-t-2">
               <button class="btn btn-primary">Envoyer <span class="fa fa-send"></span></button>
             </div>
           </form>
         </div>
       </div>
+
+
+      <div class="col-md-12 mg-t-3">
+        <div class="card-dash-csu">
+          <div class="liste-dash text-left">
+            <img [src]="images.defaultprofil" alt="" class="form-detail-img-circle" style=""/>
+            <h2 class="title">
+              <strong>Préférences du compte</strong>
+            </h2>
+            <h3 class="subtitle">Contacts de notifications</h3>
+          </div>
+
+          <form action="" class="row">
+            <div class="col-md-6">
+
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">
+                  <div class="libele-item-cart-follow">
+                    Adresses de facturation
+                  </div>
+                </legend>
+         
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Ville"/>
+                    </div>
+  
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Pays"/>
+                    </div>
+                  </div>
+                </div>
+             </fieldset>
+
+            </div>
+
+            <div class="col-md-6">
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">
+                  <div class="libele-item-cart-follow">
+                    Préférences Lingustique
+                  </div>
+                </legend>
+         
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email"/>
+                    </div>
+  
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Téléphone"/>
+                    </div>
+                  </div>
+                </div>
+             </fieldset>
+            </div>
+
+            <div class="col-md-12">
+
+              <div class="form-group mg-t-2">
+                <button class="btn btn-primary">Envoyer <span class="fa fa-send"></span></button>
+              </div>
+              
+            </div>
+
+          </form>
+        </div>
+      </div>
+
     </div>
 
   </div>

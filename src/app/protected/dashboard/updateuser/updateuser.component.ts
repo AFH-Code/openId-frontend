@@ -7,6 +7,7 @@ import { HttpEventType, HttpErrorResponse, HttpResponse } from '@angular/common/
 import { of } from 'rxjs';  
 import { catchError, map } from 'rxjs/operators'; 
 import { TokenStorageService } from '../../../services/token-storage.service';
+import { ImageService } from '../../../services/image.service';
 
 @Component({
   selector: 'app-updateuser',
@@ -17,25 +18,32 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 export class UpdateuserComponent implements OnInit {
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files = [];
 
+  images: any;
+
   form: any = {"nom": "gf", "prenom": ""};
   /* Variabe to store file data */
   filedata:any;
 
   currentuser: any;
-  currentFileName: string = 'Choisir le fichier ...';
+  currentFileName: string;
   
   url: any;
 
   constructor(private spinner: NgxSpinnerService, private toastrService: ToastrService, private userservice: UserService, 
-    private router: Router, private tokenStorage: TokenStorageService) { }
+    private router: Router, private tokenStorage: TokenStorageService, private imageService: ImageService) { }
 
   ngOnInit(): void {
-    this.currentuser = this.userservice.getCurrentUser();
+    //this.currentuser = this.userservice.getCurrentUser();
 
+    this.userservice.currentData.subscribe(data => this.currentuser = data);
+    
     if(this.currentuser != null){
       this.form.nom = this.currentuser.firstName;
       this.form.prenom = this.currentuser.lastName;
     }
+
+    this.images = this.imageService.getImages();
+
   }
 
   onSubmit(): void {
@@ -58,6 +66,7 @@ export class UpdateuserComponent implements OnInit {
           this.currentuser.firstname = databackend.body.firstname;
           this.currentuser.lastname = databackend.body.lastname;
 
+          this.userservice.changeData(this.currentuser);
           this.tokenStorage.UpdateUserLocalListe(this.currentuser);
         }
       },

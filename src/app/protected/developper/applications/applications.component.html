@@ -1,65 +1,145 @@
 <div id="main-panel-content" class="resize-lg-left-navigation" style="padding-top: 83px;">
   <div class="container">
 
-    <div class="overview-page">
-      <h2>Une Nouvelle Affaire</h2>
-    </div>
+    <h2>
+      Gestions de mes applications
+      <a class="btn btn-primary float-right mg-t-2" (click)="openModal()">
+        <i class="fa fa-plus"></i> Ajouter une appli
+      </a>
+    </h2>
 
-    <div class="row mg-t-3 ">
-      <div class="col-md-12 ">
-        <div id="breadcrumb" class="breadcrumb-dash" style="border-bottom: 1px solid #ddd; margin-bottom: 15px;">
-        	<a href="#!" class="breadcrumb-close">Accueil</a>
-        	<a href="#!" class="breadcrumb-link">
+    <div class="mg-t-3">
+      
+        <div id="breadcrumb" class="breadcrumb-dash" style="border-bottom: 1px solid #ddd; margin-bottom: 15px; min-width: 100%;">
+          <a href="#!" class="breadcrumb-close">Accueil</a>
+          <a href="#!" class="breadcrumb-link">
             <img src="assets/images/home-96.png" alt="Home Icon CSU" style="height: 15px;">
             Accueil
           </a>
-        	<a href="#!" class="breadcrumb-link">Tableau de bord</a>
-        	<a href="#breadcrumb" class="breadcrumb--active">Active Level</a>
+          <a href="#!" class="breadcrumb-link">Tableau de bord</a>
+          <a href="#breadcrumb" class="breadcrumb--active">Active Level</a>
         </div>
-      </div>
+      
     </div>
 
     <div class="row">
-      <div class="col-md-3">
-        <div class="box-dash">
-          <img src="assets/images/account-64.png" alt="" style="float: left; margin-right: 7px; width: 30px;">
-        	<h2 class="title">Comptes</h2>
-        	<h3 class="subtitle">Liste des mes comptes</h3>
-        	<span class="number">12</span>
-        	<p class="text">Almost before we knew it, we had left the ground.</p>
-
-          <div class="text-center more-infos-box">
-            Consulter
+     <div class="col-md-4" *ngFor='let in of counter(3) ; let i = index'>
+      <div class="eachCard">
+        <div class="cardContent">
+          <div class="card-content">
+            <i class="fa fa-google icono" aria-hidden="true"></i>
+            <h3>
+              <strong>passport-google-oauth</strong>
+            </h3>
+            <p>
+              Passport strategy for authenticating with Facebook using the OAuth
+              2.0 API.
+            </p>
+            <div class="info">
+              <div class="detail">
+                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                <span>35,444</span>
+              </div>
+              <div class="detail">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>35,444</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="box-dash">
-          <img src="assets/images/app-connected.png" alt="" style="float: left; margin-right: 7px; width: 30px;">
-        	<h2 class="title">Applications</h2>
-        	<h3 class="subtitle">Applications autorisées</h3>
-        	<span class="number">12</span>
-        	<p class="text">Almost before we knew it, we had left the ground.</p>
-
-          <div class="text-center more-infos-box">
-            Consulter
-          </div>
+        <div class="userActions">
+            <button class="btn-secondary button-app"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-bookmark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                </svg> Bookmark</button>
+            <button class="btn-primary button-app">
+                <a href="eachCard.apiLink" target="_blank" rel="noopener noreferrer">API Docs</a> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="box-dash">
-          <img src="assets/images/secure-account.png" alt="" style="float: left; margin-right: 7px; width: 30px;">
-        	<h2 class="title">Confidentialité</h2>
-        	<h3 class="subtitle">Nous protégons bien vos comptes</h3>
-        	<span class="number">12 styles</span>
-        	<p class="text">Almost before we knew it, we had left the ground.</p>
-
-          <div class="text-center more-infos-box">
-            Consulter
-          </div>
         </div>
+     </div>
+   </div>
+
+   <ngx-spinner
+   bdColor="rgba(51,51,51,0.8)"
+   size="medium"
+   color="#fff"
+   type="ball-scale-multiple"
+ >
+   <p style="font-size: 20px; color: white">Loading...</p>
+ </ngx-spinner>   
+    
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm">
+      <div class="modal-body">
+        <h3>Ajouter un nouveau client web</h3>
+
+        
+          <div class="form-group">
+            <input type="text"
+            class="form-control dash-input-lg"
+            name="nom"
+            [(ngModel)]="form.nom"
+            required
+            minlength="2"
+            #nom="ngModel"
+            placeholder="Entrez le nom de l'Application" [ngClass]="nom.touched ? (nom.invalid ? 'is-invalid' : 'is-valid') : ''"/>
+          
+            <div class="invalid-feedback" *ngIf="nom.invalid">
+              <div *ngIf="nom.errors.required">Le champ Nom est requis</div>
+              <div *ngIf="nom.errors.minlength">
+                Au moins 3 caractères
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <textarea name="" id="" cols="30" rows="2" class="form-control dash-input-lg"
+            name="description"
+            [(ngModel)]="form.description"
+            required
+            minlength="2"
+            #description="ngModel"
+            placeholder="Description de l'application"  [ngClass]="description.touched ? (description.invalid ? 'is-invalid' : 'is-valid') : ''"></textarea>
+          
+            <div class="invalid-feedback" *ngIf="description.invalid">
+              <div *ngIf="description.errors.required">Le champ Description est requis</div>
+              <div *ngIf="description.errors.minlength">
+                Au moins 3 caractères
+              </div>
+            </div>
+          </div>
+
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" (change)="fileEvent($event)" required />
+            <label class="custom-file-label" for="customFile">{{ currentFileName }}</label>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid || filedata == null">Créer le projet</button>
+      </div>
+    </form>
     </div>
+  </div>
+</div>
 
 
     <div class="card-dash-csu">

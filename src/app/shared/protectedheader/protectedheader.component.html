@@ -6,7 +6,7 @@
     </div>
 
   <a routerLink="/" class="logo">
-    AFHUnt
+    Applis
   </a>
 
   <div class="content-menu-right">
@@ -27,6 +27,7 @@
           <img src="assets/images/help-questionmark_430101.png" alt=""  style="height: 37px;"/>
         </a>
       </li>
+      
       <li>
         <a routerLink="/dashboard/applis/autorisees">
           <span class="item-link-applis">
@@ -37,9 +38,9 @@
       <li>
           <a class="open-profils-user" (click)="opendropDown()">
             <span *ngIf="currentuser != null">
-              <img src="assets/images/utilisateur-100.png" alt=".."/>
+              <img src="{{ currentuser.imgprofil }}" alt=".."/>
               <span class="pseudo-user">
-                Noel Kenfack
+                {{ currentuser.firstname }} {{ currentuser.lastname }}
               </span>
             </span>
             <span class="fa fa-chevron-down"></span>

@@ -15,7 +15,9 @@ export class ProtectedheaderComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentuser = this.userService.getCurrentUser();
+    //this.currentuser = this.userService.getCurrentUser();
+
+    this.userService.currentData.subscribe(data => this.currentuser = data);
   }
 
   opendropDown(){

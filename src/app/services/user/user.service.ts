@@ -4,7 +4,7 @@ import { User } from '../../models/user/User.model';
 import { HttpClient, HttpHeaders, HttpEvent, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { TokenStorageService } from '../token-storage.service';
 import { appSettings } from '../../helpers/appSettings';
-import { map } from  'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +20,15 @@ const httpOptions2 = {
 
 export class UserService {
   usersObjet = [];
+
+  private dataSource = new BehaviorSubject(this.getCurrentUser());
+  currentData = this.dataSource.asObservable();
+
   constructor(private httpClient: HttpClient, private token: TokenStorageService) { }
+
+  changeData(data: any) {
+    this.dataSource.next(data);
+  }
 
   addUser(user: User) {
     let appareilObject = {
