@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { HttpClient, HttpHeaders, HttpEvent, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { appSettings } from '../../helpers/appSettings';
+import { Subject, Observable   } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 const httpOptions2 = {
   headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data', 'Accept': 'application/json'})
@@ -14,16 +19,61 @@ const httpOptions2 = {
 export class ProjetService {
 
   currentuser: any;
+  projetsSubject = new Subject<any[]>();
+  private projets = [
+    {
+      id: 1,
+      name: 'Machine à laver',
+      status: 'éteint'
+    },
+    {
+      id: 2,
+      name: 'Frigo',
+      status: 'allumé'
+    },
+    {
+      id: 3,
+      name: 'Ordinateur',
+      status: 'éteint'
+    }
+  ];
 
   constructor(private userservice: UserService, private httpClient: HttpClient) { }
 
   addNewProjet(formData){
     let user = this.userservice.getCurrentUser();
-    alert(user.id);
-    return this.httpClient.post<any>(appSettings.API_ENDPOINT_BASE + 'update/user/' + user.id , formData, {  
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'auth/users/new/projet' , formData, {  
       reportProgress: true,  
       observe: 'events'
     });  
+  }
+
+  emitProjetSubject() {
+    this.projetsSubject.next(this.projets.slice());
+  }
+
+  getAll(): Observable<any> {
+    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM +'projets', httpOptions);
+  }
+
+  findProjetId(data: any): Observable<any>{
+    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM + 'projets/'+ data.projet_id , appSettings.httpOptions);
+  }
+
+  updateProjet(id, formData)
+  {
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'auth/users/update/projet/'+id , formData, {  
+      reportProgress: true,  
+      observe: 'events'
+    });
+  }
+
+  updateProjetKey(id,form): Observable<any> {
+    return this.httpClient.post(appSettings.API_ENDPOINT_PLATFORM + 'auth/users/generate/client/key/projet/'+id, {
+      typeoauth: form.typeoauth,
+      urlconnexion: form.urlconnexion,
+      domaineautorise: form.domaineautorise
+    }, appSettings.httpOptions);
   }
 
 }

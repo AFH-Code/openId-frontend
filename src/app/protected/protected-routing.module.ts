@@ -7,6 +7,7 @@ import { HistoriqueconnexionComponent } from './dashboard/historiqueconnexion/hi
 import { ListecompteComponent } from './dashboard/listecompte/listecompte.component';
 import { AppsautoriseComponent } from './dashboard/appsautorise/appsautorise.component';
 import { UpdateuserComponent } from './dashboard/updateuser/updateuser.component';
+import { DetailappliComponent } from './developper/detailappli/detailappli.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
         path: 'dev/applications', // child route path
         component: ApplicationsComponent, // child route component that the router renders
         data: { title: 'Liste de mes applications' }
+      },
+      {
+        path: 'dev/detail/appli/:id', // child route path
+        component: DetailappliComponent, // child route component that the router renders
+        data: { title: 'Formulaire d\'inscription' }
       }
     ],
   }

@@ -1857,3 +1857,203 @@ background-color: #fff8e4;
   font-family: Muli-Regular;
   font-size: 15px;
 }
+
+
+/*
+ CSS for the main Accordion
+*/
+.accordion-audience > input[type="checkbox"] {
+  position: absolute;
+  left: -100vw;
+}
+
+.accordion-audience .content {
+  overflow-y: hidden;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+.accordion-audience > input[type="checkbox"]:checked ~ .content {
+  height: auto;
+  overflow: visible;
+}
+
+.accordion-audience label {
+  display: block;
+}
+
+.accordion-audience {
+  margin-bottom: 5px;
+}
+
+.accordion-audience > input[type="checkbox"]:checked ~ .content {
+  padding: 15px;
+  border: 1px solid #e8e8e8;
+  border-top: 0;
+  background: #fff;
+}
+
+.accordion-audience .handle {
+  margin: 0;
+  font-size: 1.125em;
+  line-height: 1.2em;
+  font-family: OpenSans-SemiBold;
+}
+
+.accordion-audience label {
+  color: #333;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 15px;
+  background: #e8f0fe;
+  box-shadow: 0px 1px 10px 2px #D6D9E4;
+  border: 1px solid #e8f0fe!important;
+}
+
+.accordion-audience label:hover,
+.accordion-audience label:focus {
+  background: #e8f0fe;
+  border: 1px solid #0165D2!important;
+}
+
+.accordion-audience .handle label:before {
+  font-family: 'fontawesome';
+  content: "\f054";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: .58em;
+  line-height: 1.556em;
+  vertical-align: middle;
+}
+
+.accordion-audience > input[type="checkbox"]:checked ~ .handle label:before {
+  content: "\f078";
+}
+
+.accordion-audience {
+  max-width: 100%;
+}
+.accordion-audience p:last-child {
+  margin-bottom: 0;
+}
+.docs-nav-tab {
+  padding: 15px 7px; display: inline-block;  font-family: Muli-Bold; font-size: 11px; color: #0056C1;
+}
+
+.label-rappel{
+  font-family: Muli-Bold;
+  font-size: 10px;
+  line-height: 11px;
+  background-color: #FFFFFF;
+  background-repeat: repeat;
+  background-position: left top;
+  border-radius: 10px; display: inline-block; padding: 3px 7px;
+}
+.label-r1{
+  color: #03A5AD;
+  border: 2px solid  #03A5AD;
+}
+.label-r2{
+  color: #5C4E8E;
+  border: 2px solid #5C4E8E;
+}
+.label-r3{
+  color: #DC3545;
+  border: 2px solid #DC3545;
+}
+.label-r4{
+  color: #092759;
+  border: 2px solid #092759;
+}
+.label-r5{
+  color:#FFC000;
+  border: 2px solid #FFC000;
+}
+.label-r6{
+  color: #0165D2;
+  border: 2px solid #0165D2;
+}
+.label-r7{
+  color: #B2B2B2;
+  border: 2px solid  #B2B2B2;
+}
+
+
+/*
+Début du style accordion
+*/
+
+details div.prolog {
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;
+	border-bottom: 2px solid #000;
+	padding: 1.5em;
+}
+
+details div.prolog > * + * {
+	margin-top: 1.5em;
+}
+
+details + details {
+	margin-top: .5rem;
+}
+
+summary {
+	list-style: none;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+summary {
+	border: 2px solid #000;
+	padding: .75em 1em;
+	cursor: pointer;
+	position: relative;
+	padding-left: calc(1.75rem + .75rem + .75rem);
+}
+
+summary:before {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: .75rem;
+	content: "↓";
+	width: 1.75rem;
+	height: 1.75rem;
+	background-color: #000;
+	color: #FFF;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+details[open] summary {
+	background-color: #eee;
+}
+
+details[open] summary:before {
+	content: "↑";
+}
+
+summary:hover {
+	background-color: #eee;
+}
+
+.prolog a {
+	color: inherit;
+	font-weight: 600;
+	text-decoration: none;
+	box-shadow: 0 1px 0 0;
+}
+
+.prolog a:hover {
+	box-shadow: 0 3px 0 0;
+}
+
+code {
+	font-family: monospace;
+	font-weight: 600;
+}

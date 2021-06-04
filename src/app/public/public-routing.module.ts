@@ -17,11 +17,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'accueil',
+        redirectTo: 'oauth2',
         pathMatch: 'full'
       },
       {
-        path: 'accueil', // child route path
+        path: 'oauth2', // child route path
         component: ListeAccountComponent, // child route component that the router renders
         data: { title: 'Liste des comptes connectés' }
       }
@@ -76,7 +76,7 @@ const routes: Routes = [
     ],
   },
 
-  { path: '',   redirectTo: '/public/accueil', pathMatch: 'full' },
+  { path: '',   redirectTo: '/public/oauth2', pathMatch: 'full' },
 ];
 
 @NgModule({

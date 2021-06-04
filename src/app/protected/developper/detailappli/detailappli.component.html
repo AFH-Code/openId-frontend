@@ -1,0 +1,188 @@
+<div id="main-panel-content" class="resize-lg-left-navigation" style="padding-top: 83px;">
+    <div class="container">
+  
+      <h2>
+        Gestions de mes applications 
+        <span *ngIf="currentProjet != null">{{ currentProjet.nom }}</span>
+      </h2>
+      <app-overlay></app-overlay>
+  
+      <div class="mg-t-3">
+        
+          <div id="breadcrumb" class="breadcrumb-dash" style="border-bottom: 1px solid #ddd; margin-bottom: 15px; min-width: 100%;">
+            <a href="#!" class="breadcrumb-close">Accueil</a>
+            <a href="#!" class="breadcrumb-link">
+              <img src="assets/images/home-96.png" alt="Home Icon CSU" style="height: 15px;">
+              Accueil
+            </a>
+            <a href="#!" class="breadcrumb-link">Tableau de bord</a>
+            <a href="#breadcrumb" class="breadcrumb--active">Active Level</a>
+          </div>
+        
+      </div>
+
+      <div class="panel-parameters">
+        <h3>Informations de l'entreprise</h3>
+        <hr/>
+        <app-loaderhttp></app-loaderhttp>
+
+        <form class="row"  name="form"
+        (ngSubmit)="f.form.valid && updateProjet()"
+        #f="ngForm">
+          <div class="col-md-6">
+
+              <div class="form-group">
+                <input type="text"
+                class="form-control dash-input-lg"
+                name="nom"
+                [(ngModel)]="form.nom"
+                required
+                minlength="2"
+                #nom="ngModel"
+                placeholder="Entrez le nom de l'Application"  [ngClass]="nom.touched ? (nom.invalid ? 'is-invalid' : 'is-valid') : ''"/>
+              
+                <div class="invalid-feedback" *ngIf="nom.invalid">
+                  <div *ngIf="nom.errors.required">Le champ Nom est requis</div>
+                  <div *ngIf="nom.errors.minlength">
+                    Au moins 3 caractères
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                <textarea name="" id="" cols="30" rows="2" class="form-control dash-input-lg"
+                name="description"
+                [(ngModel)]="form.description"
+                required
+                minlength="2"
+                #description="ngModel"
+                
+                placeholder="Description de l'application"  [ngClass]="description.touched ? (description.invalid ? 'is-invalid' : 'is-valid') : ''" ></textarea>
+              
+                <div class="invalid-feedback" *ngIf="description.invalid">
+                  <div *ngIf="description.errors.required">Le champ Description est requis</div>
+                  <div *ngIf="description.errors.minlength">
+                    Au moins 3 caractères
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile" (change)="fileEvent($event)" required />
+              <label class="custom-file-label" for="customFile">{{ currentFileName }}</label>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" [disabled]="!f.form.valid || filedata == null">Enregistrer</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel-parameters">
+        <h3>Générez les nouvelles Clés d'autorisation</h3>
+        <hr/>
+        <app-loaderhttp></app-loaderhttp>
+
+        <form class="row" [formGroup]="paramForm" (ngSubmit)="updateProjetKey()">
+          <div class="col-md-6">
+            <div class="form-group">
+              <select id="typeoauth" class="form-control dash-input-lg" formControlName="typeoauth">
+                <option value="0" disabled>Type d'autorisation</option>
+                <option value="Authorization-Code-Grant" selected>Authorization Code Grant (Via un code)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="urlconnexion" placeholder="Entrez l'Url de connexion" class="form-control" formControlName="urlconnexion" [ngClass]="paramForm.controls.urlconnexion.touched ? (paramForm.controls.urlconnexion.invalid ? 'is-invalid' : 'is-valid') : ''"/>
+            
+              <div class="invalid-feedback">
+                <div *ngIf="paramForm.controls.urlconnexion.getError('required')">Le champ url est requis</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group"> 
+              <input type="text" id="domaineautorise" placeholder="Entrez l'Url de connexion"  class="form-control" formControlName="domaineautorise" [ngClass]="paramForm.controls.domaineautorise.touched ? (paramForm.controls.domaineautorise.invalid ? 'is-invalid' : 'is-valid') : ''" required/>
+            
+              <div class="invalid-feedback">
+                <div *ngIf="paramForm.controls.domaineautorise.getError('required')">Le champ Nom est requis</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" [disabled]="paramForm.invalid">Enregistrer</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="panel-parameters">
+        <h3>Token de sécurité</h3>
+        <hr/>
+
+        <section class="accordion-audience">
+          <input type="checkbox" name="accordion-audience" id="client_id" checked="checked">
+          <h2 class="handle">
+            <label for="client_id">Client Id: Identifiant Unique du client </label>
+          </h2>
+          <div class="content">
+      
+            <fieldset class="form__fieldset">
+              <legend class="form__legend">
+                <div class="libele-item-cart-follow">
+                  Cliquez pour copier cette valeur
+                </div>
+              </legend>
+        
+              <div class="row">
+                <div class="col-md-12">
+                  <a href="javascript:void(0)" style="padding: 10px; border: 2px dotted #999; display: block; overflow-wrap: break-word;">{{ currentProjet.clientid }}</a>
+                </div>
+              </div>
+            </fieldset>
+      
+          </div>
+        </section>
+
+
+        <section class="accordion-audience">
+          <input type="checkbox" name="accordion-audience" id="client_secret"/>
+          <h2 class="handle">
+            <label for="client_secret">Client Secret: Clé privé de Sécurité</label>
+          </h2>
+          <div class="content">
+      
+            <fieldset class="form__fieldset">
+            <legend class="form__legend">
+              <div class="libele-item-cart-follow">
+                Cliquez pour copier la valeur
+              </div>
+            </legend>
+      
+            <div class="row">
+              <div class="col-md-12">
+                <a href="javascript:void(0)" style="padding: 10px; border: 2px dotted #999; display: block;">{{ currentProjet.clientsecret }}</a>
+              </div>
+            </div>
+            </fieldset>
+      
+      
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+</div>

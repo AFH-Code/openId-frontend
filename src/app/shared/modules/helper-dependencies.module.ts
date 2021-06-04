@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { CustomtoastComponent } from './customtoast/customtoast.component';
+import { OverlayComponent } from './overlay/overlay.component';
+import { LoaderhttpComponent } from './loaderhttp/loaderhttp.component';
 
 
 @NgModule({
-  declarations: [CustomtoastComponent],
+  declarations: [CustomtoastComponent, OverlayComponent, LoaderhttpComponent],
   imports: [
     CommonModule,
     NgxSpinnerModule,
@@ -18,7 +20,9 @@ import { CustomtoastComponent } from './customtoast/customtoast.component';
   ],
   exports: [
     NgxSpinnerModule,
-    ToastrModule
+    ToastrModule,
+    OverlayComponent,
+    LoaderhttpComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
