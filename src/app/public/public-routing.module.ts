@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration/registration.
 import { RegistrationformComponent } from './registration/registrationform/registrationform.component';
 import { SinglepageComponent } from './singlepage/singlepage/singlepage.component';
 import { ActiveaccountComponent } from './singlepage/activeaccount/activeaccount.component';
+import { ResetpasswordoneComponent } from './singlepage/resetpasswordone/resetpasswordone.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,11 @@ const routes: Routes = [
       {
         path: 'account/activation/:id/:typealert/:alertstatus', // child route path
         component: ActiveaccountComponent, // child route component that the router renders
+        data: { title: 'Formulaire d\'inscription' }
+      },
+      {
+        path: 'reset/password', // child route path
+        component: ResetpasswordoneComponent, // child route component that the router renders
         data: { title: 'Formulaire d\'inscription' }
       }
     ],

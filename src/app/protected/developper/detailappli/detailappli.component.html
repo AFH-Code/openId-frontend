@@ -3,7 +3,7 @@
   
       <h2>
         Gestions de mes applications 
-        <span *ngIf="currentProjet != null">{{ currentProjet.nom }}</span>
+        <span *ngIf="currentProjet != null">{{ currentProjet.nom }} {{ currentProjet.id }}</span>
       </h2>
       <app-overlay></app-overlay>
   
@@ -101,7 +101,7 @@
 
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" id="urlconnexion" placeholder="Entrez l'Url de connexion" class="form-control" formControlName="urlconnexion" [ngClass]="paramForm.controls.urlconnexion.touched ? (paramForm.controls.urlconnexion.invalid ? 'is-invalid' : 'is-valid') : ''"/>
+              <input type="text" id="urlconnexion" placeholder="Url de redirection pour connexion" class="form-control" formControlName="urlconnexion" [ngClass]="paramForm.controls.urlconnexion.touched ? (paramForm.controls.urlconnexion.invalid ? 'is-invalid' : 'is-valid') : ''"/>
             
               <div class="invalid-feedback">
                 <div *ngIf="paramForm.controls.urlconnexion.getError('required')">Le champ url est requis</div>
@@ -111,7 +111,7 @@
 
           <div class="col-md-6">
             <div class="form-group"> 
-              <input type="text" id="domaineautorise" placeholder="Entrez l'Url de connexion"  class="form-control" formControlName="domaineautorise" [ngClass]="paramForm.controls.domaineautorise.touched ? (paramForm.controls.domaineautorise.invalid ? 'is-invalid' : 'is-valid') : ''" required/>
+              <input type="text" id="domaineautorise" placeholder="Url du domaine autirisé"  class="form-control" formControlName="domaineautorise" [ngClass]="paramForm.controls.domaineautorise.touched ? (paramForm.controls.domaineautorise.invalid ? 'is-invalid' : 'is-valid') : ''" required/>
             
               <div class="invalid-feedback">
                 <div *ngIf="paramForm.controls.domaineautorise.getError('required')">Le champ Nom est requis</div>

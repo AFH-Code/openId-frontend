@@ -20,13 +20,14 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = this.token.getToken();
     if (token != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
-    
+    }else{
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, '0') });
+    }
     this.loaderService.changeData(true);
     return next.handle(authReq).pipe(
       finalize(() => this.loaderService.changeData(false))
     );
   }
-}
 }
 
 export const authInterceptorProviders = [ 

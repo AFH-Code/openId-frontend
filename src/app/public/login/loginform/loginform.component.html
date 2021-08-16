@@ -4,13 +4,29 @@
     <div class="card login-card">
       <div class="row no-gutters">
         <div class="col-md-5">
-          <img src="assets/images/login.jpg" alt="login" class="login-card-img"/>
+          
+          <div class="login-card-img">
+            <div class="text-center mg-t-xs-medium">
+                <img src="../assets/images/img-login.jpg" alt="" style="max-width: 100%;"/>
+            </div>
+
+            <h3 class="app-title">
+              Connectez vous à plus de 06 Applications avec  <strong style="color: #325ea9;">un seul compte AFHunt</strong>
+            </h3>
+
+            <div class="text-left">
+              <span class="app-title-diviser"></span>
+            </div>
+          </div>
+          
         </div>
         <div class="col-md-7">
           <div class="card-body">
-            <p class="login-card-description" style="font-family: Philosopher-Bold;">
-              Connectez vous à plus de 06 Applications avec <strong style="color: #325ea9;">un seul compte AFHunt</strong>
-            </p>
+            <div class="login-card-description" style="font-family: Raleway-Medium;">
+              <strong style="color: #325ea9;">Connexion</strong>
+              <div style="margin-top: 15px;">Connectez-vous à votre compte <strong style="color: #325ea9;">AFHunt</strong></div>
+            </div>
+            
             <ngx-spinner
               bdColor="rgba(51,51,51,0.8)"
               size="medium"
@@ -24,7 +40,7 @@
             (ngSubmit)="f.form.valid && onSubmit()"
             #f="ngForm"
             novalidate style="display: block; min-width: 100%;">
-              <div class="" style="background: #90acd1; padding: 15px 30px; border: 1px solid #ddd; border-radius: 15px; margin-top: 15px;">
+              <div class="" style="padding: 15px 30px; border: 1px solid #ddd; border-radius: 15px; margin-top: 15px;">
 
                 <div class="text-center" style="margin-bottom: 20px;">
                   <img src="assets/images/utilisateur-100.png" alt=".." style="height: 50px;"/>
@@ -80,7 +96,7 @@
 
                 <div class="" style="margin-top: 15px;">
                   <button tupe="button" class="flat-butt flat-grad-butt" >Se connecter</button>
-                  <a href="#" style="float: right;  margin-top: 20px;">Mot de passe oublié ?</a>
+                  <a routerLink="/singlepage/reset/password" style="float: right;  margin-top: 20px;">Mot de passe oublié ?</a>
                 </div>
               </div>
             </form>

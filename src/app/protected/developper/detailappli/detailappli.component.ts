@@ -110,6 +110,7 @@ export class DetailappliComponent implements OnInit {
     
     const formValue = this.paramForm.value;
     this.spinner.show();
+    alert(this.projet_id);
     this.projetService.updateProjetKey(this.projet_id, formValue).subscribe(
       data => {
         console.log('File is completely uploaded!');

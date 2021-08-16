@@ -1,31 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../../../services/user/user.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../services/user/user.service';
 
 @Component({
-  selector: 'app-activeaccount',
-  templateUrl: './activeaccount.component.html',
-  styleUrls: ['./activeaccount.component.scss']
+  selector: 'app-resetpasswordone',
+  templateUrl: './resetpasswordone.component.html',
+  styleUrls: ['./resetpasswordone.component.scss']
 })
-
-export class ActiveaccountComponent implements OnInit {
-
-  user_id: string;
-  typealert: string;
-  alertstatus: string;
+export class ResetpasswordoneComponent implements OnInit {
 
   constructor(private actRoute: ActivatedRoute, private spinner: NgxSpinnerService, 
     private toastrService: ToastrService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.actRoute.paramMap.subscribe(params => {
-      this.user_id = params.get('id');
-      this.typealert = params.get('typealert');
-      this.alertstatus = params.get('alertstatus');
-    });
   }
 
   onSubmit(form: NgForm):void {
@@ -33,7 +23,7 @@ export class ActiveaccountComponent implements OnInit {
 
     const code = form.value['code'];
     this.spinner.show();
-    this.userService.activeAccount({'user_id': this.user_id, "code": code}).subscribe(
+    this.userService.activeAccount({"code": code}).subscribe(
       data => {
         //this.roles = this.tokenStorage.getUser().roles;
         this.spinner.hide();

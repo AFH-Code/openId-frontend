@@ -1,7 +1,7 @@
 body {
   font-family: "Karla", sans-serif;
-  background-color: #F1F3F9;
-  min-height: 100vh;
+  background-color: #fff;
+  height: auto!important;
   }
 
   * {
@@ -24,13 +24,37 @@ body {
   }
 
   /* header */
-
   .header {
     background-color: #fff;
-    position: fixed;
+    height: 65px;
     width: 100%;
-    z-index: 3;
-    box-shadow: 0px 1px 10px 2px #D6D9E4; overflow: visible;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .min-vh-100 {
+    min-height: calc(100vh - 500px)!important;
+  }
+
+  .app-title{
+    font-family: Montserrat-Bold!important;
+    font-size: 25px!important;
+    text-align: text-left;
+    line-height: 39px;
+    color: #283346;
+    width: 745px;
+    max-width: 100%;
+  }
+  
+  .app-title-detail{
+    width: 458px;
+    height: 72px;
+    font-family: Quicksand-Bold!important;
+    font-size: 16px;
+    color: #434343; margin-top: 20px;
+  }
+
+  .app-title-diviser{
+    display: inline-block; height: 6px; background: #FCC417; width: 255px; max-width: 100%;
   }
 
   .header ul {
@@ -166,8 +190,8 @@ body {
 .login-card {
   border: 0;
   border-radius: 0px;
-  box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
-  overflow: hidden; }
+  overflow: hidden; 
+}
   .login-card-img {
     border-radius: 0;
     position: absolute;
@@ -176,7 +200,7 @@ body {
     -o-object-fit: cover;
        object-fit: cover; }
   .login-card .card-body {
-    padding: 85px 60px 60px; }
+    padding: 25px 60px 60px; }
 
   .login-card-description {
     font-size: 25px;
@@ -610,8 +634,10 @@ box-shadow: 0px 1px 10px 2px #D6D9E4;
 .footer-dash-user{
   position: relative; padding: 10px 15px; background: #fff;     box-shadow: 0px 1px 10px 2px #D6D9E4;
 }
+
 .footer-static{
-  position: fixed; bottom: 0px; width: 100%; padding: 10px 15px; z-index: 2; background: #fff;     box-shadow: 0px 1px 10px 2px #D6D9E4;
+  width: 100%; padding: 10px 15px; background: #fff;     
+  border-top: 1px solid #ddd;
 }
 
 @media (max-width: 998px) {
