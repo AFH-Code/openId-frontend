@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
-
+import { TokenProjetStorageService } from '../../../services/projet/token-projet-storage.service';
 import { AuthService } from '../../../services/user/auth.service';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { Router } from '@angular/router';
@@ -25,7 +25,7 @@ export class LoginformComponent implements OnInit {
   deviceObjects = [{name: 'Email', value: 'email', type: "email", default: ""}, {name: 'Téléphone', value: 'telephone', type: "text", default: ""}, {name: 'Pseudonyme', value: 'pseudo', type: "text", default: ""}];
   selectedDeviceObj = this.deviceObjects[1];
 
-  constructor(private spinner: NgxSpinnerService, private toastrService: ToastrService,
+  constructor(private spinner: NgxSpinnerService, private toastrService: ToastrService, private tokenProjetStorageService: TokenProjetStorageService,
   private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
@@ -52,7 +52,14 @@ export class LoginformComponent implements OnInit {
         this.isLoginFailed = false;
         //this.roles = this.tokenStorage.getUser().roles;
         this.spinner.hide();
-        this.router.navigate(['/dashboard']);
+
+        let AuthProjet = this.tokenProjetStorageService.getProjetToken();
+        if(AuthProjet != undefined && AuthProjet != null)
+        {
+          this.router.navigate(['/public/oauth2'], { queryParams: { clientid: AuthProjet } });
+        }else{
+          this.router.navigate(['/dashboard']); 
+        }
       },
       err => {
         console.log(err);

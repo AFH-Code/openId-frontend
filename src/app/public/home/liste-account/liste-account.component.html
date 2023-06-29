@@ -1,86 +1,90 @@
 
-<main class="align-items-center min-vh-100 py-3 py-md-0" style="background-color: #fff!important;">
-    
-  <div style="position: absolute; top: 80px; background: #13948d; min-height: 100px; width: 100%;">
-    <div class="container">
-      
-    </div>
-  </div>
-  <div class="container" style="margin-top: 100px;">
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0" style="width: 100%;">
+
+
+  <div class="container">
       <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-12">
 
           <app-loaderhttp></app-loaderhttp>
-          <div *ngIf="traceconnexion != null" style="background: #fff;">
-            <details open>
-              <summary>
-                Acceptez la connexion à {{ traceconnexion.projet.nom }}
-              </summary>
-              <div class="prolog">
-                
-                <div *ngIf="currentuser != null">
-                  <strong style="display: block;">Connectez-vous en tant que {{ currentuser.firstname +' '+currentuser.lastname }}</strong>
 
-                  <a href="javascript:void(0)" class="btn btn-primary" (click)="validateDemande(traceconnexion, currentuser)">Continuer <span class="fa fa-angle-right"></span></a>
+          <div *ngIf="traceconnexion != null && traceconnexion.projet != null">
+
+            <div class="profile-card-hover mb-3">
+              <div class="profile-card__content" style="margin: 0px;">
+                <div  class="friends-avatars">
+                  <span>Connexion </span> <a href="javascript:void(0)">Rapide</a> • <a href="javascript:void(0)">Sécurisée</a>
                 </div>
-
-                <div *ngIf="currentuser == null">
-                  <strong style="display: block;">Vous n'avez pas de compte actif sur cette appareil</strong>
+                <hr>
+                <div class="about-company"> 
+                  <a class="profile-card__avatar" href="javascript:void(0)"><img *ngIf="" src="{{ traceconnexion.projet.logoprojeturl }}" alt="Company Avatar" class="img-thumnail"/></a>
+                  <div class="row-wrapper">
+                    <div class="profile-card__company-name">Connectez vous sur <a href="javascript:void(0)">{{ traceconnexion.projet.nom }}</a></div>
+                    <p class="profile-card__company-bio">Avec votre compte • <strong style="border-bottom: 2px dashed #ddd;">{{ currentuser.firstname +' '+currentuser.lastname }}</strong></p><a class="flat-butt flat-info-butt flat-info-grad-butt" *ngIf="currentuser != null" href="javascript:void(0)" (click)="validateDemande(traceconnexion, currentuser)">Accepter et continuer <span class="fa fa-angle-right"></span></a>
+                  </div>
+                </div>
+                  <div *ngIf="currentuser == null" class="friends-avatars">
+                  <strong>Vous n'avez pas de compte actif sur cette appareil</strong>
 
                   <a routerLink="/login/form" class="btn btn-primary">Connectez-vous <span class="fa fa-angle-right"></span></a>
-                </div>
+                  </div>
+
+                  <div *ngIf="currentuser != null" class="friends-avatars">
+                    <span>Ils viennent de se connecter aussi:</span>
+                    <a href="javascript:void(0)">Eric</a> • <a href="javascript:void(0)">Alain</a> • <a href="javascript:void(0)">Albert</a>
+                  </div>
               </div>
-            </details>
+            </div>
+          </div>
+
+          <div *ngIf="traceconnexion == null" class="text-center">
+            <span class="logo-home-panel">
+              <img [src]="images.logoafhunt"  alt="">
+            </span>
           </div>
 
         </div>
 
-        <div class="col-md-8 offset-md-2">
-          <div style="border-bottom: 1px solid #ddd; margin-bottom: 20px;">
-            <h4 class="dropdown-btn12" >Choisissez un compte pour vous connectez</h4>
-          </div>
-          <div class="" id="user-list">
-            <ul>
+        <div class="col-md-12">
+          
+            <div style="border: 3px dashed #ddd; margin-bottom: 20px; border-radius: 10px; padding: 7px;">
+              <h1 class="dropdown-btn12" style="color: #fff; font-family: Philosopher-Bold; margin: 0px;">Choisissez un compte pour vous connectez</h1>
+            </div>
 
-              <li *ngFor="let account of listeaccount; ">
-                <div class="content-account">
-                  <img src="assets/images/utilisateur-100.png" alt=".." style="" class="account-profil"/>
-                  <div>
-                    <div class="" style="position: absolute; right: 20px; top: 15px; z-index: 50;">
-                      <div class="dropdown-btn" (click)="openDropDown(account.id)">
-                        <a href="javascript:void(0)" class="coustom-btn-dropdown-table">
-                          <span class="fa fa-ellipsis-h"></span>
-                        </a>
-                        <div class="dropdown__menu dropdown-menu-{{ account.id }}">
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-download"></span>
-                            Télécharger
-                          </a>
-
-                          <a href="#!" class="dropdown__option">
-                            <span class="fa fa-money"></span>
-                            Refaire
-                          </a>
+            <div class="section_our_solution">
+              <h2>Liste des comptes disponibles sur cet appareil</h2>
+              <hr>
+              <div class="our_solution_category">
+                <div class="row solution_cards_box">
+                  <div class="col-md-4" *ngFor="let account of listeaccount;">
+                    <div class="solution_card">
+                      <div class="hover_color_bubble"></div>
+                      <img src="assets/images/utilisateur-100.png" alt=".." style="" class="account-profil"/>
+                      <div class="solu_title">
+                        <h3>{{ account.firstname }} {{ account.lastname }} </h3>
+                      </div>
+                      <div class="solu_description">
+                        <p>
+                          <strong>Email:</strong> {{ account.username }}
+                        </p>
+                        <div class="mt-3 text-right">
+                          <a routerLink="/dashboard/accueil" *ngIf="account.connected_user == 1" class="flat-butt flat-info-butt flat-info-grad-butt float-right">Tableau de bord</a>
                         </div>
                       </div>
                     </div>
-
-
-                    <h1>{{ account.firstname }} {{ account.lastname }} 
-                      <a routerLink="/dashboard/accueil" *ngIf="account.connected_user == 1" class="btn btn-primary float-right" style="margin-right: 40px; margin-top: 10px;">Dashboard</a>
-                    </h1>
-                    <h2>Dead inside but alive</h2>
                   </div>
+
                 </div>
-              </li>
-
-
-            </ul>
-          </div>
-
-            <div class="" style="margin-top: 15px;">
-              <a routerLink="/login/form" class="flat-butt flat-info-butt flat-info-grad-butt">Utiliser un autre compte</a>
+                <!--  -->
+              </div>
+              <hr>
+              <div style="margin-top: 15px;">
+                <h2>Vous ne trouvez pas le compte approprié ? <a routerLink="/login/form" class="">Utilisez un autre compte</a></h2>
+                
+              </div>
             </div>
+
+          
         </div>
       </div>
     </div>

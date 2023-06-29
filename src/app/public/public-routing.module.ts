@@ -24,7 +24,7 @@ const routes: Routes = [
       {
         path: 'oauth2', // child route path
         component: ListeAccountComponent, // child route component that the router renders
-        data: { title: 'Liste des comptes connectés' }
+        data: { title: 'Liste des comptes connectés ' }
       }
     ],
   },

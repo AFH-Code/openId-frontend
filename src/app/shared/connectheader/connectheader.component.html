@@ -1,62 +1,39 @@
 
-<header style="padding: 15px 0px; position: fixed; top: 0px; width: 100%; z-index: 1000;">
+<header class="header" style="padding: 15px 0px; position: relative; top: 0px; width: 100%; z-index: 1000;">
   <div class="container">
     <div class="row">
-      <div class="col-4 col-md-4">
+      <div class="col-8 col-md-10">
         <a href="javascript:void(0)">
           <img src="assets/images/home-96.png" alt=".." style="height: 30px;"/>
         </a>
       </div>
 
-      <div class="col-4 col-md-4">
+      <div class="col-4 col-md-2">
 
-      </div>
-
-      <div class="col-4 col-md-4 text-right">
-
-        <div class="dropdown-btn" style="position: relative; margin: 0px 20px 0px 0px;">
-          <a href="javascript:void(0)">
-            <img src="assets/images/reorder-100.png" alt=".." style="height: 30px;"/>
-          </a>
-
-          <div class="dropdown__menu" style="margin-top: 10px;">
-            <a href="#!" class="dropdown__option">
-              Liste des applications
-            </a>
-
-            <a href="#!" class="dropdown__option">
-              <span class="fa fa-money"></span>
-              Refaire
-            </a>
-
-            <a href="#!" class="dropdown__option">
-              <span class="fa fa-money"></span>
-              Refaire
-            </a>
-
-            <a href="#!" class="dropdown__option">
-              <span class="fa fa-money"></span>
-              Refaire
-            </a>
+          <div class="row">
+            <div class="col-6 col-md-6" style="padding-top: 7px;">
+              <a href="javascript:void(0)" style="color: #333; font-size: 25px;">
+                <span class="fa fa-th"></span>
+              </a>
+            </div>
+            <div class="col-6 col-md-6">
+              <div class="dropdown-btn">
+                <a href="javascript:void(0)" >
+                  <img src="assets/images/utilisateur-100.png" alt=".." style="height: 30px;"/>
+                </a>
+                <div class="dropdown__menu" style="margin-top: 10px;">
+                  <a href="#!" class="dropdown__option">
+                    Liste des comptes
+                  </a>
+    
+                  <a href="#!" class="dropdown__option" *ngFor="let item of accountlist;">
+                    <span class="fa fa-user"></span>
+                    {{ item.firstname }} - {{ item.lastname }}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="dropdown-btn" style="position: relative; margin: 0px 0px 10px 0px">
-          <a href="javascript:void(0)" >
-            <img src="assets/images/utilisateur-100.png" alt=".." style="height: 30px;"/>
-          </a>
-          <div class="dropdown__menu" style="margin-top: 10px;">
-            <a href="#!" class="dropdown__option">
-              Liste des comptes
-            </a>
-
-            <a href="#!" class="dropdown__option" *ngFor="let item of accountlist;">
-              <span class="fa fa-money"></span>
-              {{ item.firstname }} - {{ item.lastname }}
-            </a>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>

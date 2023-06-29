@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { TokenProjetStorageService } from '../../../services/projet/token-projet-storage.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
-
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../../models/user/User.model';
 import { UserService } from '../../../services/user/user.service';
 import { AuthService } from '../../../services/user/auth.service';
@@ -32,12 +31,22 @@ export class RegistrationformComponent implements OnInit {
                 private userService: UserService,
                 private router: Router,
                 private authService: AuthService,
-                private spinner: NgxSpinnerService, private toastrService: ToastrService
+                private spinner: NgxSpinnerService, 
+                private toastrService: ToastrService,
+                private activatedRoute: ActivatedRoute,
+                private tokenProjetStorageService: TokenProjetStorageService
               ) { }
 
     ngOnInit(): void {
       this.initForm();
       this.togglePassWord();
+
+      this.activatedRoute.queryParams.subscribe(params => { 
+          let AuthClient = params['clientid'];
+          if(AuthClient != undefined){
+            this.tokenProjetStorageService.saveProjetToken(AuthClient);
+          }
+      });
     }
 
     togglePassWord()

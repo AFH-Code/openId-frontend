@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { finalize } from "rxjs/operators";
 import { LoaderhttpService } from '../services/loaderhttp.service';
 
-const TOKEN_HEADER_KEY = 'Authorization';
+const TOKEN_HEADER_KEY = 'X-Bearer-Token';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -19,6 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token = this.token.getToken();
     if (token != null) {
+      //alert(token);
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
     }else{
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, '0') });

@@ -17,11 +17,16 @@ export class TraceconnexionService {
   createTraceConnexion(clientid)
   {
     console.log(clientid);
-    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'traceconnexions' , clientid, appSettings.httpOptions);
+    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM + 'traceconnexions/identify?clientId='+clientid.clientid, appSettings.httpOptions);
   }
 
   acceptDemandeProjet(traceconnexion: any, currentuser: any)
   {
     return this.httpClient.put<any>(appSettings.API_ENDPOINT_PLATFORM + 'traceconnexions/'+traceconnexion.id , { iduser: currentuser.id }, appSettings.httpOptions);
+  }
+
+  getTraceConnexionUser()
+  {
+    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM +'trace/connexions/dashboard', httpOptions);
   }
 }

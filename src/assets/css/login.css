@@ -191,6 +191,8 @@ body {
   border: 0;
   border-radius: 0px;
   overflow: hidden; 
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 16px; margin: 50px 0px;
 }
   .login-card-img {
     border-radius: 0;
@@ -198,7 +200,9 @@ body {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
-       object-fit: cover; }
+       object-fit: cover;
+    margin: 40px 30px;
+  }
   .login-card .card-body {
     padding: 25px 60px 60px; }
 
@@ -429,6 +433,9 @@ body {
         display: none;
         padding: 7px 15px;
       }
+      .login-card-img{
+        display: none;
+      }
     }
 
     @media (min-width: 767px) {
@@ -632,12 +639,15 @@ box-shadow: 0px 1px 10px 2px #D6D9E4;
 }
 
 .footer-dash-user{
-  position: relative; padding: 10px 15px; background: #fff;     box-shadow: 0px 1px 10px 2px #D6D9E4;
+  position: relative; padding: 10px 15px; background: #fff; box-shadow: 0px 1px 10px 2px #D6D9E4;
 }
 
 .footer-static{
   width: 100%; padding: 10px 15px; background: #fff;     
   border-top: 1px solid #ddd;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 998px) {
@@ -1803,7 +1813,7 @@ background-color: #fff8e4;
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #FCC92E;
+  background-color: #13948d;
   left: 0;
   top: 0;
   border-radius: 15px;
@@ -2082,4 +2092,406 @@ summary:hover {
 code {
 	font-family: monospace;
 	font-weight: 600;
+}
+
+/**
+------Begin Card Stat ----------
+***/
+:root {
+  --primary: #34b53a;
+  --primary-light: #e2fbd7;
+  --secondary: #4339f2;
+  --secondary-light: #dad7fe;
+  --instagram: #ff3a29;
+  --instagram-light: #ffe5d3;
+}
+
+.cardstat {
+  width: 100%;
+  background: #fff;
+  padding: 20px 20px 30px 20px;
+  font-family: system-ui;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 7px;
+}
+.card__header {
+  display: flex;
+  align-items: center;
+}
+.card__header img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.card__header__info h2 {
+  font-size: 22px;
+  font-weight: normal;
+}
+.card__header__info span {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.card__header__actions {
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: auto;
+  align-self: flex-start;
+}
+.card__statistics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+.card__statistics__topic {
+  font-weight: normal;
+  font-size: 10px;
+  padding: 0px!important;
+  margin: 0px!important;
+}
+.card__statistics__value {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--primary);
+}
+.card__statistics__progress {
+  height: 8px;
+  margin-top: 7px;
+  border-radius: 20px;
+  background: var(--primary-light);
+  flex-basis: 100%;
+}
+.card__statistics__progress .fill {
+  border-radius: 20px;
+  width: 50%;
+  height: 100%;
+  background: var(--primary);
+}
+
+/**
+------End Card Stats -------------
+***/
+
+.profile-card-hover {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.0784313725);
+  padding: 15px;
+}
+.profile-card-hover .profile-card__content {
+  margin: 1.5em 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.profile-card-hover .profile-card__content .about-company {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 1em;
+  padding-bottom: 1.3em;
+}
+.profile-card-hover .profile-card__content .about-company .profile-card__avatar{
+  min-width: 110px;
+}
+.profile-card-hover .profile-card__content .about-company .profile-card__avatar img {
+  width: auto;
+  height: 100px;
+  margin-right: 20px;
+}
+@media (max-width: 768px){
+  .profile-card-hover .profile-card__content .about-company .profile-card__avatar{
+    display: none;
+  }
+}
+.profile-card-hover .profile-card__content .about-company .row-wrapper {
+  display: block;
+  padding-right: 1em;
+}
+.profile-card-hover .profile-card__content .about-company .row-wrapper .profile-card__company-name {
+  font-weight: 700;
+  font-size: 22px;
+}
+.profile-card-hover .profile-card__content .about-company .row-wrapper .profile-card__company-bio {
+  color: #9ba1ad;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0.4em 0 1.2em;
+}
+.profile-card-hover .profile-card__content .about-company .row-wrapper .browse-jobs-btn {
+  padding: 4px 15px;
+  border-radius: 4px;
+  background: #4292f4;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  transition: all 200ms ease;
+}
+.profile-card-hover .profile-card__content .about-company .row-wrapper .browse-jobs-btn:hover {
+  background: white;
+  color: #4292f4;
+  border: 1px solid #4292f4;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions {
+  margin-bottom: auto;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions .follow-btn {
+  border: 1px solid rgba(66, 146, 244, 0.3);
+  background: transparent;
+  padding: 6px 14px 5px 13px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions .follow-btn i svg {
+  width: 14px;
+  height: 14px;
+  fill: #4292f4;
+  vertical-align: text-bottom;
+  transition: all 200ms ease;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions .follow-btn span {
+  color: #4292f4;
+  margin-left: 0.2em;
+  transition: all 200ms ease;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions .follow-btn:hover {
+  background: #4292f4;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions .follow-btn:hover i svg {
+  fill: #fff;
+}
+.profile-card-hover .profile-card__content .about-company .user-actions .follow-btn:hover span {
+  color: #fff;
+}
+.profile-card-hover .profile-card__content .row-wrapper span {
+  font-size: 15px;
+}
+.profile-card-hover .profile-card__content .friends-avatars {
+  background: #f2f2f2; padding: 7px;
+}
+.friends-avatars span, .friends-avatars strong{
+  display: inline-block; margin-right: 7px;
+}
+
+.profile-card-hover .profile-card__content .row-wrapper .friends-avatars a img {
+  height: 37px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #fff;
+  margin-left: -2px;
+}
+.profile-card-hover .profile-card__content .row-wrapper .see-all-btn {
+  color: #4292f4;
+  font-size: 14px;
+  font-weight: 600;
+}
+.profile-card-hover .profile-card__content .ellipsis-horizontal-icon {
+  text-align: right;
+  align-items: right;
+  margin-left: auto;
+  position: absolute;
+  bottom: -6px;
+  right: -12px;
+  height: 27px;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+}
+.profile-card-hover .profile-card__content .ellipsis-horizontal-icon svg {
+  width: 45px;
+  height: 45px;
+}
+.ng-star-inserted, app-liste-account{
+  width: 100%;
+}
+header.header{
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25); z-index: 7; position: relative;
+}
+.public-warper{
+  min-height: calc(100vh - 108px); background-color: #13948d; display: flex;
+align-items: center;
+vertical-align: middle; min-width: 100%; table-layout: fixed;
+}
+
+/************Card User**************/
+.section_our_solution{
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    min-height: 350px;
+}
+.section_our_solution .row {
+  align-items: center;
+}
+
+.our_solution_category {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.solution_cards_box .solution_card {
+  flex: 0 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+    0 5px 15px 0 rgba(37, 44, 97, 0.15);
+  border-radius: 15px;
+  margin: 8px;
+  padding: 10px 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 200px;
+  transition: 0.7s;
+  max-width: 100%;
+}
+
+.solution_cards_box .solution_card:hover {
+  background: #309df0;
+  color: #fff;
+  transform: scale(1.1);
+  z-index: 9;
+}
+
+.solution_cards_box .solution_card:hover::before {
+  background: rgb(85 108 214 / 10%);
+}
+
+.solution_cards_box .solution_card:hover .solu_title h3,
+.solution_cards_box .solution_card:hover .solu_description p {
+  color: #fff;
+}
+
+.solution_cards_box .solution_card:before {
+  content: "";
+  position: absolute;
+  background: rgb(85 108 214 / 5%);
+  width: 170px;
+  height: 400px;
+  z-index: -1;
+  transform: rotate(42deg);
+  right: -56px;
+  top: -23px;
+  border-radius: 35px;
+}
+
+.solution_cards_box .solution_card:hover .solu_description button {
+  background: #fff !important;
+  color: #309df0;
+}
+
+
+.solution_card .solu_title h3 {
+  color: #212121;
+  font-size: 1.3rem;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.solution_card .solu_description p {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.solution_card .solu_description button {
+  border: 0;
+  border-radius: 15px;
+  background: linear-gradient(
+    140deg,
+    #42c3ca 0%,
+    #42c3ca 50%,
+    #42c3cac7 75%
+  ) !important;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 5px 16px;
+}
+
+.our_solution_content h1 {
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.hover_color_bubble {
+  position: absolute;
+  background: rgb(54 81 207 / 15%);
+  width: 100rem;
+  height: 100rem;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  top: 16rem;
+  border-radius: 50%;
+  transform: rotate(-36deg);
+  left: -18rem;
+  transition: 0.7s;
+}
+
+.solution_cards_box .solution_card:hover .hover_color_bubble {
+  top: 0rem;
+}
+
+.solution_cards_box .solution_card .so_top_icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution_cards_box .solution_card .so_top_icon img {
+  width: 40px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/*start media query*/
+@media screen and (min-width: 320px) {
+  .sol_card_top_3 {
+    position: relative;
+    top: 0;
+  }
+
+  .our_solution_category {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .our_solution_category .solution_cards_box {
+    flex: auto;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .our_solution_category .solution_cards_box {
+    flex: 1;
+  }
+}
+
+img.account-profil{
+  height: 30px;
+}
+
+/****************End Card Usr******************/
+
+.logo-home-panel{
+  display: inline-block; background-color: #fff; padding: 20px; border-radius: 20px; margin-bottom: 15px;
+}
+.logo-home-panel img{
+  height: 100px; max-width: 100%;
 }
