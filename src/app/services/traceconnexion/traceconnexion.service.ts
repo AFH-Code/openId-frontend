@@ -27,6 +27,6 @@ export class TraceconnexionService {
 
   getTraceConnexionUser()
   {
-    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM +'trace/connexions/dashboard', httpOptions);
+    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM +'traceconnexions/connect/dashboard', httpOptions);
   }
 }

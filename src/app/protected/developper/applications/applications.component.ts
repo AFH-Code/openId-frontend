@@ -39,7 +39,7 @@ export class ApplicationsComponent implements OnInit {
     this.projetService.getAll()
       .subscribe(
         response => {
-          this.projets = response['hydra:member'];
+          this.projets = response['data'];
           console.log(response);
         },
         error => {

@@ -20,29 +20,13 @@ export class ProjetService {
 
   currentuser: any;
   projetsSubject = new Subject<any[]>();
-  private projets = [
-    {
-      id: 1,
-      name: 'Machine à laver',
-      status: 'éteint'
-    },
-    {
-      id: 2,
-      name: 'Frigo',
-      status: 'allumé'
-    },
-    {
-      id: 3,
-      name: 'Ordinateur',
-      status: 'éteint'
-    }
-  ];
+  private projets = [];
 
-  constructor(private userservice: UserService, private httpClient: HttpClient) { }
+  constructor(private userservice: UserService, private httpClient: HttpClient){ }
 
   addNewProjet(formData){
     let user = this.userservice.getCurrentUser();
-    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'auth/users/new/projet' , formData, {  
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'projets' , formData, {  
       reportProgress: true,  
       observe: 'events'
     });  
@@ -53,7 +37,7 @@ export class ProjetService {
   }
 
   getAll(): Observable<any> {
-    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM +'projets', httpOptions);
+    return this.httpClient.get(appSettings.API_ENDPOINT_PLATFORM +'projets/user', httpOptions);
   }
 
   findProjetId(data: any): Observable<any>{
@@ -62,7 +46,7 @@ export class ProjetService {
 
   updateProjet(id, formData)
   {
-    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'auth/users/update/projet/'+id , formData, {  
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'projets/'+id , formData, {  
       reportProgress: true,  
       observe: 'events'
     });

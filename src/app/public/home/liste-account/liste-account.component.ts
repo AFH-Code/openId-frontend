@@ -28,7 +28,6 @@ export class ListeAccountComponent implements OnInit {
   constructor(private tokenStorageService : TokenStorageService, private activatedRoute: ActivatedRoute, private userservice: UserService,
     private traceconnexionService: TraceconnexionService, private spinner: NgxSpinnerService, private toastrService: ToastrService,
     private tokenProjetStorageService: TokenProjetStorageService, private imageService: ImageService) { 
-    
   }
 
   ngOnInit(): void {

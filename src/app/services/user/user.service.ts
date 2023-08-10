@@ -70,7 +70,7 @@ export class UserService {
   }
 
   activeAccount(data: any): Observable<any>{
-    return this.httpClient.post(appSettings.API_ENDPOINT_BASE + 'validate/account', data , appSettings.httpOptions);
+    return this.httpClient.post(appSettings.API_ENDPOINT_PLATFORM + 'users/validate/account', data , appSettings.httpOptions);
   }
 
   updateDefault(formData){

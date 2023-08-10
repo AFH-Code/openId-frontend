@@ -22,7 +22,7 @@ export class StatistiqueComponent implements OnInit {
     this.traceconnexionService.getTraceConnexionUser()
       .subscribe(
         response => {
-          this.traceconnexions = response['hydra:member'];
+          this.traceconnexions = response['data'];
           console.log(response);
         },
         error => {

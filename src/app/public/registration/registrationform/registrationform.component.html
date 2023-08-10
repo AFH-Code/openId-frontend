@@ -44,12 +44,11 @@
                 </ngx-spinner>
 
                 <form style="max-width: 100%; display: block;"
-
-                name="form"
-                (ngSubmit)="onSubmit(f)"
-                #f="ngForm"
-                novalidate
-                >
+                  name="form"
+                  (ngSubmit)="onSubmit(f)"
+                  #f="ngForm"
+                  novalidate
+                  >
                   <div class="row">
                     <div class="col-md-6">
                       <div class="alert-danger" *ngIf="f.submitted && firstName.invalid">
@@ -87,7 +86,7 @@
                       </div>
                       <div class="form-group mb-4">
                         <label for="lastName" class="sr-only">Prenom</label>
-                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Prénom de famille"
+                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Prénom"
                         [(ngModel)]="form.lastName"
                         required
                         minlength="3"
@@ -148,9 +147,7 @@
                   <p class="login-card-footer-text" style="margin-top: 15px;">Vous souhaitez plutôt  <a href="javascript:void(0)" class="text-reset" routerLink="/login/form"><strong> vous connectez à votre compte <span class="fa fa-angle-right"></span></strong></a></p>
                 </form>
 
-
               </div>
-              
 
               <div class="alert alert-success" *ngIf="isSuccessful">
                 Logged in as {{ roles }}. {{ token }}

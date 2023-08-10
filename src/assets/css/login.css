@@ -523,8 +523,6 @@ body {
 }
 
 
-
-
 .left-sidebar-lg-redim{
   width: 300px!important;
   height: 100%;
@@ -595,6 +593,8 @@ margin-left: 0px!important;
   background-position: left top;
   border: 1px solid #F1F3F9;
   box-shadow: none!important;
+  position: fixed!important;
+  z-index: 9999!important;
 }
 
 .title-page-dash{
