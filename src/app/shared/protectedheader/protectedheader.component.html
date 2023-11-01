@@ -36,7 +36,7 @@
         </a>
       </li>
       <li>
-          <a class="open-profils-user" (click)="opendropDown()">
+          <a href="javascript:void(0)" class="open-profils-user" (click)="opendropDown()">
             <span *ngIf="currentuser != null">
               <img src="{{ currentuser.imgprofil }}" alt=".."/>
               <span class="pseudo-user">
@@ -47,13 +47,14 @@
           </a>
           <div class="profil-dropdown">
             <a routerLink="/accueil" style="line-height: 15px;">
-              <h5>Noel Kenack</h5>
+              <img src="{{ currentuser.imgprofil }}" alt=".." style="float: left; margin-right: 7px; height: 50px; width: 50px; border-radius: 50%;"/>
+              <h5><strong>{{ currentuser.firstname }} {{ currentuser.lastname }}</strong></h5>
               <div class="">
-                noel.kenfack@yahoo.fr
+                Compte Particulier
               </div>
             </a>
             <a routerLink="update/account" style="line-height: 15px;">
-              <h5>Paramètres</h5>
+              <h5><strong>Paramètres</strong></h5>
               <div class="">
                 Modifier les accès de ce compte.
               </div>

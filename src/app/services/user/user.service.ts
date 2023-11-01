@@ -75,7 +75,15 @@ export class UserService {
 
   updateDefault(formData){
     let user = this.getCurrentUser();
-    return this.httpClient.post<any>(appSettings.API_ENDPOINT_BASE + 'update/user/' + user.id , formData, {  
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'update/user/' + user.id , formData, {  
+      reportProgress: true,  
+      observe: 'events'
+    });  
+  }
+
+  saveUpdateContact(formData: any): Observable<any>
+  {
+    return this.httpClient.post<any>(appSettings.API_ENDPOINT_PLATFORM + 'reset/contact/user', formData, {  
       reportProgress: true,  
       observe: 'events'
     });  

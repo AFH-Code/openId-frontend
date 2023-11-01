@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'; 
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { ImageService } from '../../../services/image.service';
+import { FormGroup, FormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-updateuser',
@@ -21,16 +22,20 @@ export class UpdateuserComponent implements OnInit {
   images: any;
 
   form: any = {"nom": "gf", "prenom": ""};
+  formContact: any = {"email": "", "telephone": ""};
   /* Variabe to store file data */
   filedata:any;
 
   currentuser: any;
   currentFileName: string;
-  
+  userContactForm: FormGroup = this.formBuilder.group({
+    email: ['', Validators.required],
+    telephone: ['', Validators.required]
+  });
   url: any;
 
   constructor(private spinner: NgxSpinnerService, private toastrService: ToastrService, private userservice: UserService, 
-    private router: Router, private tokenStorage: TokenStorageService, private imageService: ImageService) { }
+    private router: Router, private tokenStorage: TokenStorageService, private imageService: ImageService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     //this.currentuser = this.userservice.getCurrentUser();
@@ -43,7 +48,6 @@ export class UpdateuserComponent implements OnInit {
     }
 
     this.images = this.imageService.getImages();
-
   }
 
   onSubmit(): void {
@@ -109,7 +113,6 @@ export class UpdateuserComponent implements OnInit {
         });
       }
     );*/
-    
   }
 
   /* File onchange event */
@@ -169,6 +172,19 @@ export class UpdateuserComponent implements OnInit {
       };  
 
       fileUpload.click();  
+  }
+
+  onUpdateContact(formContact: NgForm): void {
+    console.log(this.formContact);
+
+    this.userservice.saveUpdateContact(this.formContact).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.toastrService.success('Avec succès', 'Mise à jour éffectuée');
+      },
+      error: err => console.log(err),
+      complete: () => console.log('complete')
+    })
   }
 
 }

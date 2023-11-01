@@ -147,35 +147,77 @@
           <div class="liste-dash text-left">
             <img [src]="images.defaultprofil" alt="" class="form-detail-img-circle"/>
             <h2 class="title">
-              <strong>Récupération du compte</strong>
+              <strong>Informations privées du compte</strong>
             </h2>
             <h3 class="subtitle">Contacts de notifications</h3>
           </div>
 
-          <form class="" action="index.html" method="post">
-            <div class="form-group">
-                <input type="text" name="" value="" class="form-control dash-input-lg" placeholder="Email">
-            </div>
+          <form (ngSubmit)="onUpdateContact(fc)"
+          #fc="ngForm"
+          novalidate>
+            <div class="row">
+                <div class="col-md-6">
 
-            <div class="form-group">
-              <input type="text" name="" value="" class="form-control dash-input-lg" placeholder="Téléphone">
-            </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" 
+                    [(ngModel)]="formContact.email"
+                    [ngClass]="email.touched ? (email.invalid ? 'is-invalid' : 'is-valid') : ''"
+                    required
+                    minlength="2"
+                    maxlength="150"
+                    email="true"
+                    #email="ngModel"
+                    />
+                    <div class="invalid-feedback" *ngIf="email.invalid">
+                      <div *ngIf="email.errors.required">Le champ Email est requis</div>
+                      <div *ngIf="email.errors.minlength">
+                        Au moins 3 caractères
+                      </div>
+                    </div>
+                </div>
 
+
+                </div>
+                <div class="col-md-6">
+                  
+                  <div class="form-group">
+                    <input type="text" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" 
+                    [(ngModel)]="formContact.telephone"
+                    [ngClass]="telephone.touched ? (telephone.invalid ? 'is-invalid' : 'is-valid') : ''"
+                    required
+                    minlength="2"
+                    maxlength="150"
+                    #telephone="ngModel"
+                    />
+                    <div class="invalid-feedback" *ngIf="telephone.invalid">
+                      <div *ngIf="telephone.errors.required">Le champ Téléphone est requis</div>
+                      <div *ngIf="telephone.errors.minlength">
+                        Au moins 3 caractères
+                      </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" [disabled]="fc.invalid">Envoyer <span class="fa fa-send"></span></button>
+            </div>
+          </form>
             <fieldset class="form__fieldset">
               <legend class="form__legend">
                 <div class="libele-item-cart-follow">
-                  Ligne 2 de contacts (optionnelle)
+                  Réinitialiser le mot de passe
                 </div>
               </legend>
        
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email"/>
+                    <input type="email" class="form-control" placeholder="Actuel mot de passe"/>
                   </div>
 
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Téléphone"/>
+                    <input type="email" class="form-control" placeholder="Nouveau mot de passe"/>
                   </div>
                 </div>
               </div>
@@ -184,7 +226,7 @@
             <div class="form-group mg-t-2">
               <button class="btn btn-primary">Envoyer <span class="fa fa-send"></span></button>
             </div>
-          </form>
+          
         </div>
       </div>
 
