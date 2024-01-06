@@ -148,7 +148,7 @@
         
               <div class="row">
                 <div class="col-md-12">
-                  <a href="javascript:void(0)" style="padding: 10px; border: 2px dotted #999; display: block; overflow-wrap: break-word;">{{ currentProjet.clientid }}</a>
+                  <a href="javascript:void(0)" *ngIf="currentProjet != null" style="padding: 10px; border: 2px dotted #999; display: block; overflow-wrap: break-word;">{{ currentProjet.clientid }}</a>
                 </div>
               </div>
             </fieldset>
@@ -173,7 +173,7 @@
       
             <div class="row">
               <div class="col-md-12">
-                <a href="javascript:void(0)" style="padding: 10px; border: 2px dotted #999; display: block;">{{ currentProjet.clientsecret }}</a>
+                <a href="javascript:void(0)" *ngIf="currentProjet != null"  style="padding: 10px; border: 2px dotted #999; display: block;">{{ currentProjet.clientsecret }}</a>
               </div>
             </div>
             </fieldset>

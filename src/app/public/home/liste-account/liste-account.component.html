@@ -17,7 +17,7 @@
                 </div>
                 <hr>
                 <div class="about-company"> 
-                  <a class="profile-card__avatar" href="javascript:void(0)"><img *ngIf="" src="{{ traceconnexion.projet.logoprojeturl }}" alt="Company Avatar" class="img-thumnail"/></a>
+                  <a class="profile-card__avatar" href="javascript:void(0)"><img *ngIf="traceconnexion.projet.logoprojeturl  != null" src="{{ baseUrl }}{{ traceconnexion.projet.logoprojeturl }}" alt="Company Avatar" class="img-thumnail"/></a>
                   <div class="row-wrapper">
                     <div class="profile-card__company-name">Connectez vous sur <a href="javascript:void(0)">{{ traceconnexion.projet.nom }}</a></div>
                     <p class="profile-card__company-bio">Avec votre compte • <strong style="border-bottom: 2px dashed #ddd;">{{ currentuser.firstname +' '+currentuser.lastname }}</strong></p><a class="flat-butt flat-info-butt flat-info-grad-butt" *ngIf="currentuser != null" href="javascript:void(0)" (click)="validateDemande(traceconnexion, currentuser)">Accepter et continuer <span class="fa fa-angle-right"></span></a>

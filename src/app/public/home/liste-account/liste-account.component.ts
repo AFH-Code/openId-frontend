@@ -4,6 +4,7 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 import { TraceconnexionService } from '../../../services/traceconnexion/traceconnexion.service';
 import { UserService } from '../../../services/user/user.service';
 import { TokenProjetStorageService } from '../../../services/projet/token-projet-storage.service';
+import { appSettings } from '../../../helpers/appSettings';
 import { ImageService } from '../../../services/image.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -23,7 +24,7 @@ export class ListeAccountComponent implements OnInit {
   traceconnexion: any;
   currentuser: any;
   images: any;
-
+  baseUrl = appSettings.RESOURCE_URL_BASE;
 
   constructor(private tokenStorageService : TokenStorageService, private activatedRoute: ActivatedRoute, private userservice: UserService,
     private traceconnexionService: TraceconnexionService, private spinner: NgxSpinnerService, private toastrService: ToastrService,
