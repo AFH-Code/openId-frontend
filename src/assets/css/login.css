@@ -2495,3 +2495,26 @@ img.account-profil{
 .logo-home-panel img{
   height: 100px; max-width: 100%;
 }
+
+
+.isDisabled {
+  cursor: not-allowed;
+  text-decoration: none;
+  width: auto !important;
+  font-size: 15px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #d6d9e4;
+  border: 0px solid #404040;
+  border-radius: 2px;
+  pointer-events: none;
+  padding: 7px 15px;
+}
+.iti {
+  min-width: 100%!important;
+  display: block!important;
+}
+.important-link{
+  color: #13948d!important;
+  text-decoration: underline;
+}

@@ -47,7 +47,6 @@ export class RegistrationformComponent implements OnInit {
     ngOnInit(): void {
       this.initForm();
       this.togglePassWord();
-
       this.activatedRoute.queryParams.subscribe(params => { 
           let AuthClient = params['clientid'];
           if(AuthClient != undefined){
@@ -55,8 +54,9 @@ export class RegistrationformComponent implements OnInit {
           }
       });
     }
-    changePreferredCountries() {
-      this.preferredCountries = [CountryISO.India, CountryISO.Canada];
+
+    changePreferredCountries(){
+      this.preferredCountries = [CountryISO.Cameroon, CountryISO.Canada];
     }
 
     togglePassWord()
@@ -79,7 +79,8 @@ export class RegistrationformComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         username: ['', Validators.required],
-        password: ['', Validators.required]
+        password: ['', Validators.required],
+        phone: ['', Validators.required]
       });
     }
 
@@ -99,6 +100,8 @@ export class RegistrationformComponent implements OnInit {
      //Méthode templateUrl
      onSubmit(form: NgForm): void {
        this.spinner.show();
+       console.log(form);
+       /*
        this.authService.register(this.form).subscribe(
          data => {
            console.log(data);
@@ -121,6 +124,6 @@ export class RegistrationformComponent implements OnInit {
              progressAnimation: 'increasing'
            });
          }
-       );
+       );*/
      }
   }

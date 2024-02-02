@@ -74,13 +74,12 @@
                     </div>
 
                     <div class="col-md-6">
-
                       <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
                         <div *ngIf="lastName.errors.required">Username is required</div>
                         <div *ngIf="lastName.errors.minlength">
                           Username must be at least 3 characters
                         </div>
-                        <div *ngIf="lastnName.errors.maxlength">
+                        <div *ngIf="lastName.errors.maxlength">
                           Username must be at most 50 characters
                         </div>
                       </div>
@@ -94,8 +93,28 @@
                         #lastName="ngModel"
                         />
                       </div>
-
                     </div>
+                  </div>
+
+
+                  <div class="alert-danger" *ngIf="f.submitted && f.controls.phone != null && (f.controls.phone.value == null || f.controls.phone.errors != null)">
+                    <div >Numéro Invalide</div>
+                  </div>
+                  <div class="form-group">
+                  <ngx-intl-tel-input
+                      [cssClass]="'form-control'"
+                      [preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+                      [enableAutoCountrySelect]="false"
+                      [enablePlaceholder]="true"
+                      [searchCountryFlag]="true"
+                      [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                      [selectFirstCountry]="false"
+                      [selectedCountryISO]="CountryISO.Cameroon"
+                      [maxLength]="15"
+                      [phoneValidation]="true"
+                      name="phone"
+                      [(ngModel)]="form.phone"
+                    ></ngx-intl-tel-input>
                   </div>
 
                   <div class="alert-danger" *ngIf="f.submitted && username.invalid">
@@ -108,32 +127,16 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="username" class="sr-only">Email Ou Téléphone</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Email ou Téléphone"
+                    <label for="username" class="sr-only">Email</label>
+                    <input type="email" name="username" id="username" class="form-control" placeholder="Email"
                     [(ngModel)]="form.username"
                     required
                     minlength="3"
                     maxlength="50"
                     #username="ngModel"
+                    [email]="true"
                     />
                   </div>
-
-
-                  <ngx-intl-tel-input
-		[cssClass]="'custom'"
-		[preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
-		[enableAutoCountrySelect]="false"
-		[enablePlaceholder]="true"
-		[searchCountryFlag]="true"
-		[searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
-		[selectFirstCountry]="false"
-		[selectedCountryISO]="CountryISO.India"
-		[maxLength]="15"
-		[phoneValidation]="true"
-		[inputId]=""
-		name="phone"
-		formControlName="phone"
-	></ngx-intl-tel-input>
 
                   <div class="alert-danger" *ngIf="f.submitted && password.invalid">
                     <div *ngIf="password.errors.required">Password is required</div>
@@ -154,14 +157,15 @@
                   </div>
 
                   <div class="" style="margin-top: 15px;">
-                    <button href="#" class="flat-butt flat-grad-butt" [disabled]="f.invalid">S'inscrire</button>
+                    <button href="#" [disabled]="f.invalid" [ngClass]="{'isDisabled': (f.invalid || (f.controls.phone != null && f.controls.phone.value == null)), 'flat-butt flat-grad-butt': (!f.invalid && f.controls.phone != null && f.controls.phone.value != null) }">S'inscrire</button>
+                    <!-- button href="#" class="flat-butt flat-grad-butt">S'inscrire</button -->
                   </div>
 
                   <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                     Signup failed!<br />{{ errorMessage }}
                   </div>
 
-                  <p class="login-card-footer-text" style="margin-top: 15px;">Vous souhaitez plutôt  <a href="javascript:void(0)" class="text-reset" routerLink="/login/form"><strong> vous connectez à votre compte <span class="fa fa-angle-right"></span></strong></a></p>
+                  <p class="login-card-footer-text" style="margin-top: 15px;">Vous souhaitez plutôt  <a href="javascript:void(0)" class="text-reset" routerLink="/login/form"><strong class="important-link"> vous connectez à votre compte <span class="fa fa-angle-right"></span></strong></a></p>
                 </form>
 
               </div>
