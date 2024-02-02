@@ -118,6 +118,23 @@
                     />
                   </div>
 
+
+                  <ngx-intl-tel-input
+		[cssClass]="'custom'"
+		[preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+		[enableAutoCountrySelect]="false"
+		[enablePlaceholder]="true"
+		[searchCountryFlag]="true"
+		[searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+		[selectFirstCountry]="false"
+		[selectedCountryISO]="CountryISO.India"
+		[maxLength]="15"
+		[phoneValidation]="true"
+		[inputId]=""
+		name="phone"
+		formControlName="phone"
+	></ngx-intl-tel-input>
+
                   <div class="alert-danger" *ngIf="f.submitted && password.invalid">
                     <div *ngIf="password.errors.required">Password is required</div>
                     <div *ngIf="password.errors.minlength">

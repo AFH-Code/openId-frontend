@@ -6,6 +6,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { CustomtoastComponent } from './customtoast/customtoast.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { LoaderhttpComponent } from './loaderhttp/loaderhttp.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { LoaderhttpComponent } from './loaderhttp/loaderhttp.component';
   imports: [
     CommonModule,
     NgxSpinnerModule,
+    NgxIntlTelInputModule,
     ToastrModule.forRoot({
     timeOut: 10000,
     preventDuplicates: true,
@@ -22,7 +24,8 @@ import { LoaderhttpComponent } from './loaderhttp/loaderhttp.component';
     NgxSpinnerModule,
     ToastrModule,
     OverlayComponent,
-    LoaderhttpComponent
+    LoaderhttpComponent,
+    NgxIntlTelInputModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

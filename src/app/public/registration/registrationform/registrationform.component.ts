@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormArray, NgForm } from '@angular/
 import { TokenProjetStorageService } from '../../../services/projet/token-projet-storage.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
+import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../../models/user/User.model';
 import { UserService } from '../../../services/user/user.service';
@@ -27,6 +28,12 @@ export class RegistrationformComponent implements OnInit {
     public imagePath;
     url: string;
 
+    separateDialCode = false;
+    SearchCountryField = SearchCountryField;
+    CountryISO = CountryISO;
+    PhoneNumberFormat = PhoneNumberFormat;
+    preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
+
     constructor(private formBuilder: FormBuilder,
                 private userService: UserService,
                 private router: Router,
@@ -47,6 +54,9 @@ export class RegistrationformComponent implements OnInit {
             this.tokenProjetStorageService.saveProjetToken(AuthClient);
           }
       });
+    }
+    changePreferredCountries() {
+      this.preferredCountries = [CountryISO.India, CountryISO.Canada];
     }
 
     togglePassWord()
