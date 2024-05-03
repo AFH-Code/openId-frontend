@@ -23,11 +23,23 @@ export class AuthService {
 
   register(user): Observable<any> {
     console.log(user.firstName+'-'+user.lastName+'-'+user.username+'-'+user.password);
+    var countryCode= '';
+    var dialCode= '';
+    var number= '';
+    if(user.phone != null)
+    {
+      countryCode = user.phone.countryCode;
+      dialCode = user.phone.dialCode;
+      number = user.phone.nationalNumber;
+    }
     return this.http.post(appSettings.API_ENDPOINT_PLATFORM + 'users', {
       "firstName": user.firstName,
       "lastName": user.lastName,
       "username": user.username,
-      "password": user.password
+      "password": user.password,
+      "countryCode": countryCode,
+      "dialCode": dialCode,
+      'telephone': number
     }, httpOptions);
   }
 }

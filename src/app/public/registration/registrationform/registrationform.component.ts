@@ -34,25 +34,53 @@ export class RegistrationformComponent implements OnInit {
     PhoneNumberFormat = PhoneNumberFormat;
     preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
 
+    emailClient: string=''; telClient: string=''; domaineClient: string=''; nomClient: string=''; prenomClient: string='';
+
     constructor(private formBuilder: FormBuilder,
-                private userService: UserService,
-                private router: Router,
-                private authService: AuthService,
-                private spinner: NgxSpinnerService, 
-                private toastrService: ToastrService,
-                private activatedRoute: ActivatedRoute,
-                private tokenProjetStorageService: TokenProjetStorageService
-              ) { }
+      private userService: UserService,
+      private router: Router,
+      private authService: AuthService,
+      private spinner: NgxSpinnerService, 
+      private toastrService: ToastrService,
+      private activatedRoute: ActivatedRoute,
+      private tokenProjetStorageService: TokenProjetStorageService
+    ) { }
 
     ngOnInit(): void {
-      this.initForm();
+      
       this.togglePassWord();
-      this.activatedRoute.queryParams.subscribe(params => { 
+      this.activatedRoute.queryParams.subscribe(params => {    
           let AuthClient = params['clientid'];
           if(AuthClient != undefined){
             this.tokenProjetStorageService.saveProjetToken(AuthClient);
           }
+          let emailClient = params['email'];
+          if(emailClient != undefined && emailClient != ''){
+            //alert(emailClient);
+            this.emailClient = emailClient;
+          }
+          let telClient = params['tel'];
+          if(telClient != undefined && telClient != ''){
+            //alert(telClient);
+            this.telClient = telClient;
+          }
+          let domaineClient = params['domaine'];
+          if(domaineClient != undefined && domaineClient != ''){
+            //alert(domaineClient);
+            this.domaineClient = domaineClient;
+          }
+          let nomClient = params['nom'];
+          if(nomClient != undefined && nomClient != ''){
+            //alert(nomClient);
+            this.nomClient = nomClient;
+          }
+          let prenomClient = params['prenom'];
+          if(prenomClient != undefined && prenomClient != ''){
+            //alert(prenomClient);
+            this.prenomClient = prenomClient;
+          }
       });
+      this.initForm();
     }
 
     changePreferredCountries(){
@@ -74,14 +102,18 @@ export class RegistrationformComponent implements OnInit {
 
     //CONTRUCTION DU TEMPLATE
     //Méthode Réactive
-    initForm() {
+    initForm(){
       this.userForm = this.formBuilder.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        username: ['', Validators.required],
+        firstName: [this.prenomClient, Validators.required],
+        lastName: [this.nomClient, Validators.required],
+        username: [this.emailClient, Validators.required],
         password: ['', Validators.required],
-        phone: ['', Validators.required]
+        phone: [this.telClient, Validators.required]
       });
+      this.form.firstName = this.prenomClient;
+      this.form.lastName = this.nomClient;
+      this.form.username = this.emailClient;
+      this.form.phone = this.telClient;
     }
 
     // onSubmitForm() {
@@ -100,8 +132,8 @@ export class RegistrationformComponent implements OnInit {
      //Méthode templateUrl
      onSubmit(form: NgForm): void {
        this.spinner.show();
-       console.log(form);
-       /*
+       console.log(this.form);
+       
        this.authService.register(this.form).subscribe(
          data => {
            console.log(data);
@@ -124,6 +156,6 @@ export class RegistrationformComponent implements OnInit {
              progressAnimation: 'increasing'
            });
          }
-       );*/
+       );
      }
   }
