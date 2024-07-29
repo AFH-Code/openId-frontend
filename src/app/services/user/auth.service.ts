@@ -16,8 +16,8 @@ export class AuthService {
 
   login(credentials): Observable<any> {
     return this.http.post(appSettings.API_ENDPOINT_PLATFORM + 'users/login', {
-      username: credentials.username,
-      password: credentials.password
+      "username": credentials.username,
+      "password": credentials.password
     }, httpOptions);
   }
 

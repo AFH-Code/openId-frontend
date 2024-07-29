@@ -44,6 +44,7 @@ export class LoginformComponent implements OnInit {
 
   onSubmit(): void {
     this.spinner.show();
+
     this.authService.login(this.form).subscribe(
       data => {
         console.log(data);

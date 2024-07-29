@@ -78,7 +78,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "afh-account:build:production"
+              "browserTarget": "afh-account:build:production",
+              "proxyConfig": "src/proxy.config.json"
             }
           }
         },
