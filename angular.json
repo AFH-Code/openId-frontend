@@ -122,7 +122,6 @@
       }
     }
   },
-  "defaultProject": "afh-account",
   "cli": {
     "analytics": "6db93fda-52cf-43d4-ac1a-8ee9404a1501"
   }

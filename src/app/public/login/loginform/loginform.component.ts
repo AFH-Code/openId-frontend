@@ -45,8 +45,10 @@ export class LoginformComponent implements OnInit {
   onSubmit(): void {
     this.spinner.show();
 
-    this.authService.login(this.form).subscribe(
-      data => {
+    this.authService.login(this.form)
+    .subscribe({
+      next: (data: any) => {
+        
         console.log(data);
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.addUserLocalListe(data.user);
@@ -61,8 +63,9 @@ export class LoginformComponent implements OnInit {
         }else{
           this.router.navigate(['/dashboard']); 
         }
+
       },
-      err => {
+      error: (err:any) => {
         console.log(err);
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
@@ -72,8 +75,9 @@ export class LoginformComponent implements OnInit {
           closeButton: true,
           progressAnimation: 'increasing'
         });
-      }
-    );
+      },
+      complete: () => console.log('complete')
+    })
   }
 
   togglePassWord()

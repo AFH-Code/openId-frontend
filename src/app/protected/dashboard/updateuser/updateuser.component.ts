@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'; 
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { ImageService } from '../../../services/image.service';
-import { FormGroup, FormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-updateuser',
@@ -28,14 +28,14 @@ export class UpdateuserComponent implements OnInit {
 
   currentuser: any;
   currentFileName: string;
-  userContactForm: FormGroup = this.formBuilder.group({
+  userContactForm: UntypedFormGroup = this.formBuilder.group({
     email: ['', Validators.required],
     telephone: ['', Validators.required]
   });
   url: any;
 
   constructor(private spinner: NgxSpinnerService, private toastrService: ToastrService, private userservice: UserService, 
-    private router: Router, private tokenStorage: TokenStorageService, private imageService: ImageService, private formBuilder: FormBuilder) { }
+    private router: Router, private tokenStorage: TokenStorageService, private imageService: ImageService, private formBuilder: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     //this.currentuser = this.userservice.getCurrentUser();

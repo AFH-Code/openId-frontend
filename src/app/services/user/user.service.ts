@@ -38,7 +38,7 @@ export class UserService {
       "password": user.password
     };
     this.httpClient
-    .post('http://127.0.0.1:8000/api/users', appareilObject)
+    .post(appSettings.API_ENDPOINT_PLATFORM+'api/users', appareilObject, httpOptions)
     .subscribe(
       () => {
         console.log('Enregistrement terminé !');
@@ -89,5 +89,12 @@ export class UserService {
     });  
   }
 
+  resetPasswordWithCode(data: any): Observable<any>{
+    return this.httpClient.post(appSettings.API_ENDPOINT_PLATFORM + 'users/reset/password/code', data , appSettings.httpOptions);
+  }
+
+  updatePasswordAccountkey(data: any): Observable<any>{
+    return this.httpClient.post(appSettings.API_ENDPOINT_PLATFORM + 'users/update/password/accountkey', data , appSettings.httpOptions);
+  }
 }
 

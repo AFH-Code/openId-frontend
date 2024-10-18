@@ -28,7 +28,7 @@ export class ListeAccountComponent implements OnInit {
 
   constructor(private tokenStorageService : TokenStorageService, private activatedRoute: ActivatedRoute, private userservice: UserService,
     private traceconnexionService: TraceconnexionService, private spinner: NgxSpinnerService, private toastrService: ToastrService,
-    private tokenProjetStorageService: TokenProjetStorageService, private imageService: ImageService) { 
+    private tokenProjetStorageService: TokenProjetStorageService, private imageService: ImageService, private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -47,6 +47,10 @@ export class ListeAccountComponent implements OnInit {
     this.listeaccount = JSON.parse(this.tokenStorageService.getListeUser());
     //console.log(this.currentuser);
     this.images = this.imageService.getImages();
+    if(this.listeaccount.length == 0)
+    {
+      this.router.navigate(['/login/form']); 
+    }
   }
 
   dropdown()

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormArray, NgForm } from '@angular/forms';
 import { TokenProjetStorageService } from '../../../services/projet/token-projet-storage.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +19,7 @@ declare var $ :any;
 })
 
 export class RegistrationformComponent implements OnInit {
-    userForm: FormGroup;
+    userForm: UntypedFormGroup;
     form: any = {};
     isSuccessful = false;
     isSignUpFailed = false;
@@ -36,7 +36,7 @@ export class RegistrationformComponent implements OnInit {
 
     emailClient: string=''; telClient: string=''; domaineClient: string=''; nomClient: string=''; prenomClient: string='';
 
-    constructor(private formBuilder: FormBuilder,
+    constructor(private formBuilder: UntypedFormBuilder,
       private userService: UserService,
       private router: Router,
       private authService: AuthService,

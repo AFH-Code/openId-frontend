@@ -4,7 +4,7 @@ import { ProjetService } from '../../../services/projet/projet.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
 import { HttpEventType, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-detailappli',
@@ -15,14 +15,14 @@ export class DetailappliComponent implements OnInit {
 
   projet_id: string;
   currentProjet: any;
-  paramForm: FormGroup;
+  paramForm: UntypedFormGroup;
 
   form: any = {"nom": "gf", "description": ""};
   filedata:any;
   url: any;
   currentFileName: string = 'Choisir une image';
 
-  constructor(private formBuilder: FormBuilder, private actRoute: ActivatedRoute, private projetService: ProjetService, private spinner: NgxSpinnerService, private toastrService: ToastrService){ }
+  constructor(private formBuilder: UntypedFormBuilder, private actRoute: ActivatedRoute, private projetService: ProjetService, private spinner: NgxSpinnerService, private toastrService: ToastrService){ }
 
   ngOnInit(): void{
     this.actRoute.paramMap.subscribe(params =>{

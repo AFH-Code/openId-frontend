@@ -21,24 +21,22 @@ export class ResetpasswordoneComponent implements OnInit {
   onSubmit(form: NgForm):void {
     console.log(form.value);
 
-    const code = form.value['code'];
+    const username = form.value['username'];
     this.spinner.show();
-    this.userService.activeAccount({"code": code}).subscribe(
+    this.userService.resetPasswordWithCode({"username": username}).subscribe(
       data => {
-        //this.roles = this.tokenStorage.getUser().roles;
         this.spinner.hide();
-        this.router.navigate(['/login/form']);
+        this.router.navigate(['/singlepage/check/code/user'], { queryParams: {accountKey: data.accountKey}});
       },
       err => {
         this.spinner.hide();
-        this.toastrService.error('Error rencontré lors de la validation de votre compte', 'Major Error', {
+        this.toastrService.error('Error rencontré lors de l\'envois du code de renouvellement du mot de passe', 'Major Error', {
           timeOut: 3000,
           closeButton: true,
           progressAnimation: 'increasing'
         });
       }
     );
-
- }
+  }
 
 }

@@ -23,18 +23,18 @@ export class TokenStorageService {
   }
 
   public getToken(): string {
-    return window.localStorage.getItem(TOKEN_KEY);
+    return window.localStorage.getItem(TOKEN_KEY) ?? '';
   }
 
   public getListeUser(): string{
-    return window.localStorage.getItem(USER_KEY_LISTE);
+    return window.localStorage.getItem(USER_KEY_LISTE) ?? '[]';
   }
 
   /*
     A noté que l'objet user reçu ici en paramètre est déjà mentionné comme connecté
   */
   public addUserLocalListe(user): void{
-    let curent_liste = JSON.parse(window.localStorage.getItem(USER_KEY_LISTE));
+    let curent_liste = JSON.parse(window.localStorage.getItem(USER_KEY_LISTE) ?? '[]');
     if(curent_liste){  //Si la liste des utilisateurs n'est pas null on l'hydrate à l'objet users
       this.usersObjet = curent_liste;
     }
@@ -57,7 +57,7 @@ export class TokenStorageService {
   }
 
   public UpdateUserLocalListe(user): void{
-    let curent_liste = JSON.parse(window.localStorage.getItem(USER_KEY_LISTE));
+    let curent_liste = JSON.parse(window.localStorage.getItem(USER_KEY_LISTE) ?? '[]');
     if(curent_liste){  //Si la liste des utilisateurs n'est pas null on l'hydrate à l'objet users
       this.usersObjet = curent_liste;
     }

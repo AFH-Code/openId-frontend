@@ -11,30 +11,51 @@
                 <h4 class="card-title">récupération du mot de passe</h4>
                 <div>Nous avons envoyé votre lien de connexion par email/sms, ouvrez votre boite et suivez le ce lien pour activer votre compte.</div>
                 <form method="POST" class="my-login-validation" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                  
+                    <div class="form-group">
+                        <label for="code" style="margin-top: 15px;">
+                            <strong>Code</strong>
+                        </label>
+                        <input id="code" type="text" class="form-control" name="code" ngModel required autofocus placeholder="Entrez le code"/>
+                        <div class="invalid-feedback">
+                            Code is invalid
+                        </div>
+                    </div>
+                  
                   <div class="form-group">
-                    <label for="code" style="margin-top: 15px;">
-                      <strong>Vous pouvez rentrer votre code d'activation ici</strong>
+                    <label for="code">
+                      <strong>Entrez votre nouveau mot de passe</strong>
                     </label>
-                    <input id="username" type="text" class="form-control" name="username" ngModel required autofocus placeholder="Email ou Téléphone"/>
+                    <input id="password" type="text" class="form-control" name="password" ngModel required autofocus placeholder="Nouveau mot de passe"/>
                     <div class="invalid-feedback">
-                      Email ou Téléphone is invalid
+                      Password is invalid
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="code">
+                      <strong>Reprenez le mot de passe</strong>
+                    </label>
+                    <input id="newpassword" type="text" class="form-control" name="newpassword" ngModel required autofocus placeholder="Reprendre le mot de passe"/>
+                    <div class="invalid-feedback">
+                      Repeat password is invalid
                     </div>
                   </div>
     
                   <div class="form-group m-0">
                     <button type="submit" class="btn btn-primary btn-block" [disabled]="f.invalid">
-                      Envoyer le code
+                      Enregistrer
                     </button>
                   </div>
                   <div class="mt-4 text-center">
-                    Vous ne connaissez plus votre Email ou Téléphone ?
+                    Vous n'avez pas reçu le code ?
     
                     <!-- COPY -->
                     <div>
                       <div bgcolor="#111111" align="center" style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                        <p style="margin: 0;">Utilisez d'autres méthodes de connexion</p>
+                        <p style="margin: 0;">Renvoyez à nouveau</p>
                         <div class="">
-                          <a href="javascript:void(0)" routerLink="/login/form" class="btn btn-primary" >Valider mon compte</a>
+                          <a href="javascript:void(0)" routerLink="/login/form" class="btn btn-primary" >Envoyer le code</a>
                         </div>
                       </div>
                     </div>
@@ -49,7 +70,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> 
     
     <div style="width: 100%; position: fixed;bottom: 0; background-color: #fff; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); border-radius: 3px 3px 0 0;font-size: 12px;padding: 5px 10px;">
     
@@ -60,12 +81,12 @@
     
     </div>
     </div>
-    
+
     <ngx-spinner
-      bdColor="rgba(51,51,51,0.8)"
-      size="medium"
-      color="#fff"
-      type="ball-scale-multiple"
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple"
     >
-      <p style="font-size: 20px; color: white">Loading...</p>
+        <p style="font-size: 20px; color: white">Loading...</p>
     </ngx-spinner>
